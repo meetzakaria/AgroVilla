@@ -1,0 +1,19 @@
+<section class="marketplace-section container py-5">
+    <div class="text-center mb-5">
+      <h2 class="marketplace-title">🌱 AgroVilla Marketplace</h2>
+      <p class="marketplace-subtitle">Buy and Sell Agricultural Products and Equipment Easily</p>
+    </div>
+  
+    <!-- Categories -->
+    <div class="row g-4">
+      <div class="col-md-4" *ngFor="let item of categories">
+        <div class="marketplace-card">
+          <img [src]="item.image" [alt]="item.name" class="marketplace-icon">
+          <h4>{{ item.name }}</h4>
+          <p>{{ item.description }}</p>
+          <a href="#" class="btn btn-outline-success btn-sm mt-2">Explore</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  

@@ -1,0 +1,17 @@
+<div class="container my-5">
+    <h2 class="mb-4 text-center">Our Blog</h2>
+    <div class="row g-4">
+      <div class="col-md-4" *ngFor="let post of blogPosts">
+        <div class="card h-100 shadow-sm border-0">
+          <img [src]="post.image" class="card-img-top" alt="Blog Image">
+          <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text text-muted">{{ post.date }} · {{ post.readTime }}</p>
+            <p class="card-text">{{ post.excerpt }}</p>
+            <a [routerLink]="['/blog', post.slug]" class="btn btn-outline-success btn-sm">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

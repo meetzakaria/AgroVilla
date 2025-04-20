@@ -1,0 +1,298 @@
+<!-- Header Section -->
+<header class="top-header py-2 bg-light border-bottom">
+    <div class="container-fluid d-flex flex-wrap justify-content-between align-items-center">
+      
+      <!-- Left: Language & Currency -->
+      <div class="d-flex align-items-center gap-2">
+        <select class="form-select form-select-sm w-auto">
+          <option value="bn">বাংলা</option>
+          <option value="en">English</option>
+        </select>
+  
+        <select class="form-select form-select-sm w-auto">
+          <option value="BDT">৳ BDT</option>
+          <option value="USD">$ USD</option>
+          <option value="INR">₹ INR</option>
+        </select>
+      </div>
+  
+      <!-- Center: Support Info -->
+      <div class="text-muted small text-center">
+        📞 Helpline: <a href="tel:+8801742020165" class="text-decoration-none fw-bold text-dark">+880 1742 020165</a>
+      </div>
+  
+      <!-- Right: Auth Links + Social Icons -->
+      <div class="d-flex align-items-center gap-3">
+        <div>
+          <!-- 🔘 Login Button -->
+  <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#loginModal">
+    <i class="fas fa-sign-in-alt me-1"></i> Login
+  </button> |
+          <!-- 🔘 Register Button -->
+  <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#RegisterModal">
+    <i class=" me-1"></i> Register
+  </button>
+        </div>
+        <div class="social-icons d-none d-md-block">
+          <a href="#" class="text-dark me-2"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-dark me-2"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-dark"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      
+    </div>
+  </header>
+  
+  
+  <header class="navbar">
+    <div class="logo"><img src="logo1.png" alt="logo" height="60px"></div>
+    <nav>
+      <a href="marketplace" class="btn" routerLink="/marketplace">Marketplace</a>
+      <a class="btn" href="guides/" routerLink="/guides">Guides</a>
+      <a href="community" class="btn" routerLink="/community">Community</a>
+      <a href="info" class="btn" routerLink="/rental">Information</a>
+      <a class="btn" href="blogs/" routerLink="/rental">Blogs</a>
+      <a class="btn" routerLink="/rental" href="https://www.bssnews.net/agriculture-news">News Portal</a>
+      </nav>
+  
+      <form class="d-flex ms-auto" role="search">
+        <div class="input-group">
+          <input class="form-control" type="search" placeholder="Search products..." aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </form>
+  
+    <div class="icons">
+      <i class="fa fa-shopping-cart"></i>
+      <button type="button" class="btn btn-warning">
+        <i class=" me-1"></i> My Cart
+      </button>
+    </div>
+  </header>
+  
+  
+  
+  <!-- 💻 Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content shadow rounded-4">
+        
+        <!-- Modal Header -->
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title" id="loginModalLabel">Login to Your Account</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+  
+        <!-- Modal Body -->
+        <div class="modal-body p-4">
+          <form>
+            <div class="mb-3">
+              <label for="emailInput" class="form-label">Phone Number</label>
+              <input type="email" class="form-control" id="emailInput" placeholder="Enter your phone number" required>
+            </div>
+  
+            <div class="mb-3">
+              <label for="passwordInput" class="form-label">Password</label>
+              <input type="password" class="form-control" id="passwordInput" placeholder="Enter your password" required>
+            </div>
+  
+            <button type="submit" class="btn btn-success w-100" >Login</button>
+          </form>
+  
+          <div class="mt-3 text-center">
+            <small>Don't have an account? 
+              <a href="#" class="text-decoration-none text-success" data-bs-toggle="modal" data-bs-target="#RegisterModal">Register</a>
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 💻 Register Modal -->
+  <div class="modal fade" id="RegisterModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content shadow rounded-4">
+        
+        <!-- Modal Header -->
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title" id="loginModalLabel">Register to Your Account</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+  
+        <!-- Modal Body -->
+        <div class="modal-body p-4">
+          <form>
+            <div class="mb-3">
+              <label for="emailInput" class="form-label">Full Name</label>
+              <input type="email" class="form-control" id="emailInput" placeholder="Enter your full name" required>
+            </div>
+  
+            <div class="mb-3">
+              <label for="emailInput" class="form-label">Phone Number</label>
+              <input type="email" class="form-control" id="emailInput" placeholder="Enter your phone number" required>
+            </div>
+            <div class="mb-3">
+              <label for="passwordInput" class="form-label">Password</label>
+              <input type="password" class="form-control" id="passwordInput" placeholder="Enter your password" required>
+            </div>
+            <div class="mb-3">
+              <label for="passwordInput" class="form-label">Re-enter Password</label>
+              <input type="password" class="form-control" id="passwordInput" placeholder="Enter your re-enter password" required>
+            </div>
+  
+            <button type="submit" class="btn btn-success w-100">Register</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <!-- Banner Section -->
+  <section class="hero-banner position-relative text-white">
+    <div class="container py-5">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h1 class="display-4 fw-bold">Welcome to AgroVilla</h1>
+          <p class="lead">Your trusted digital partner for agricultural products, equipment, and farmer support services.</p>
+          <a href="#" class="btn btn-warning btn-lg mt-3">
+            <i class="fas fa-shopping-basket me-2"></i> Explore Marketplace
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  <!-- Features Section -->
+  <section class="features-section py-5 bg-light">
+    <div class="container text-center">
+      <h2 class="mb-4 fw-bold">What AgroVilla Offers</h2>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <i class="fas fa-tractor fa-3x mb-3 text-success"></i>
+              <h5 class="card-title">Buy & Sell Products</h5>
+              <p class="card-text">AgroVilla Marketplace is a smart and modern digital platform that enables easy, fast, and secure buying and selling of agricultural products and machinery. Through this marketplace, farmers, sellers, and buyers can connect directly, ensuring fair transactions without the need for middlemen.</p>
+              <a href="marketplace" routerLink="/marketplace" class="btn btn-primary">SEE MARKETPLACE</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <i class="fas fa-info-circle fa-3x mb-3 text-primary"></i>
+              <h5 class="card-title">Farmer Info Hub</h5>
+              <p class="card-text">AgroVilla Information Hub is a knowledge center that empowers Bangladeshi farmers to make smart, digital decisions. This interactive and regularly updated platform provides practical, real-world farming information. Discover local farmers, their techniques, and crops. Access crop guides, pest control tips, real-time market prices, and weather updates—all in one place.</p>
+              <a href="info" routerLink="/farmer" class="btn btn-primary">SEE INFORMATION</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <i class="fas fa-users fa-3x mb-3 text-warning"></i>
+              <h5 class="card-title">Community Support</h5>
+  
+              <p class="card-text">Connect with other farmers, share tips, and get advice on farming techniques.Join forums, share success stories, and get equipment rental or subsidy support.</p>
+              <a href="community" routerLink="/community" class="btn btn-primary">JOIN COMMUNITY</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  <section class="product-section container my-4">
+    <div class="row">
+      
+      <!-- Sidebar -->
+      <aside class="col-md-3">
+        <div class="card shadow-sm border-0 category-sidebar">
+          <div class="card-header bg-success text-white">
+            <h5 class="mb-0">Product Categories</h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" *ngFor="let category of categories" (click)="filterByCategory(category)">
+              <i class="fas fa-angle-right me-2 text-success"></i> {{ category }}
+            </li>
+          </ul>
+        </div>
+      </aside>
+  
+      <!-- Product area placeholder (you can place your product grid here) -->
+      <div class="col-md-9">
+        <div class="container my-4">
+          <div class="row g-4">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let item of products">
+              <div class="card product-card h-100 shadow-sm border-0">
+                <img [src]="item.image" alt="product" class="card-img-top">
+        
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title text-truncate">{{ item.name }}</h5>
+                  <p class="text-success fw-bold">BDT:{{ item.price }}</p>
+                  <div class="mb-2 text-warning">
+                    <i class="fas fa-star" *ngFor="let star of [1,2,3,4,5]"></i>
+                  </div>
+                  <button class="btn btn-success mt-auto w-100">
+                    <i class="fas fa-shopping-cart me-1"></i> Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+  
+    
+  
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-links">
+      <div class="customer-support">
+        <h4>Customer Support</h4>
+        <ul>
+          <li><a href="/about-us"> About Us</a></li>
+          <li><a href="/shipping-policy"> Shipping & Delivery Policy</a></li>
+          <li><a href="/refund-policy"> Refund & Returns Policy</a></li>
+          <li><a href="/terms"> Terms & Conditions</a></li>
+          <li><a href="/privacy"> Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="contact-info">
+        <h4>Contact Us</h4>
+        <p>Dhanmondi, Dhaka-1200, Bangladesh</p>
+        <p>Phone: <a href="tel:+8801742020165">+8801742020165</a></p>
+        <p>Email: <a href="mailto:info@agrovilla.com">info&#64;agrovilla.com</a></p>
+      </div>
+      <div class="account-links">
+        <h4>My Account</h4>
+        <ul>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/order-history">Order History</a></li>
+          <li><a href="/wishlist">My Wishlist</a></li>
+          <li><a href="/track-order">Track Order</a></li>
+          <li><a href="/affiliate">Be an affiliate partner</a></li>
+        </ul>
+      </div>
+      <div class="seller-zone">
+        <h4>Seller Zone</h4>
+        <ul>
+          <li><a href="/seller-apply">Apply as a Seller</a></li>
+          <li><a href="/seller-login">Login to Seller Panel</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 AgroVilla</p>
+    </div>
+  </footer>

@@ -1,0 +1,38 @@
+.info-hub {
+    background: #f1f8f6;
+    border-radius: 12px;
+  }
+  
+  .section-title {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #236c3c;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+    max-width: 600px;
+    margin: auto;
+    color: #555;
+  }
+  
+  .info-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 150, 0, 0.1);
+    transition: 0.3s;
+  }
+  
+  .info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 150, 0, 0.15);
+  }
+  
+  .info-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+  }
+  
