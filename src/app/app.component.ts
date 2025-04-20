@@ -1,12 +1,17 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'AgroVilla';
+  products = [
+    { name: 'Hybril Rice Seeds', price: 20, image: 'seeds01.jpg' },
+    { name: 'Organic Fertilizer', price: 15, image: 'fertilizer01.jpeg' },
+    { name: 'Tractor Tiller', price: 120000, image: 'tructor01.jpg' }
+  ];
 }
