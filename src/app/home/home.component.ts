@@ -20,7 +20,12 @@ export class HomeComponent {
     'Fertilizers',
     'Equipment',
     'Machinery',
-    'Saplings'
+    'Saplings',
+    'Seeds',
+    'Fertilizers',
+    'Equipment',
+    'Machinery',
+    'Saplings',
   ];
   
   filterByCategory(category: string) {
