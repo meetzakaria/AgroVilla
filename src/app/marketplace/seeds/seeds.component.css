@@ -1,0 +1,29 @@
+.marketplace-products {
+    background: #f5fcf7;
+    border-radius: 12px;
+  }
+  
+  .section-title h2 {
+    font-weight: 700;
+    color: #236c3c;
+  }
+  
+  .product-card {
+    border: none;
+    box-shadow: 0 4px 16px rgba(0, 150, 0, 0.1);
+    transition: all 0.3s ease;
+    border-radius: 12px;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 150, 0, 0.2);
+  }
+  
+  .card-img-top {
+    max-height: 180px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+  

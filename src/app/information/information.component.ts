@@ -12,32 +12,32 @@ export class InformationComponent {
     {
       title: 'Farming Guides',
       desc: 'Step-by-step crop growing techniques for local seasons.',
-      icon: 'assets/icons/farming-guide.png'
+      icon: 'info/guide.png'
     },
     {
       title: 'Weather Forecasts',
       desc: 'Live updates on rain, temperature, and humidity.',
-      icon: 'assets/icons/weather.png'
+      icon: 'info/weather.jpg'
     },
     {
       title: 'Market Prices',
       desc: 'Track daily price changes of crops across regions.',
-      icon: 'assets/icons/market-price.png'
+      icon: 'info/price.jpg'
     },
     {
       title: 'Pest & Disease Info',
       desc: 'How to prevent & treat common crop diseases.',
-      icon: 'assets/icons/pest-control.png'
+      icon: 'info/pest.jpg'
     },
     {
       title: 'Govt. Schemes',
       desc: 'Find subsidy and loan programs by the government.',
-      icon: 'assets/icons/government.png'
+      icon: 'info/govt.jpg'
     },
     {
       title: 'Agri News',
       desc: 'Stay informed with recent news & innovations in agriculture.',
-      icon: 'assets/icons/news.png'
+      icon: 'info/news.jpg'
     }
   ];
 }

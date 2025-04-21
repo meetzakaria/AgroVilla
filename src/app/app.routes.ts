@@ -5,6 +5,7 @@ import { CropGuidesComponent } from './crop-guides/crop-guides.component';
 import { CommunityComponent } from './community/community.component';
 import { MarketplaceComponent } from './marketplace/marketplace.component';
 import { InformationComponent } from './information/information.component';
+import { SeedsComponent } from './marketplace/seeds/seeds.component';
 
 export const routes: Routes = [
     {path: 'blogs', component: BlogsComponent},
@@ -13,4 +14,5 @@ export const routes: Routes = [
     {path: 'community', component: CommunityComponent},
     {path: 'marketplace', component: MarketplaceComponent},
     {path: 'info', component: InformationComponent},
+    {path: 'seeds', component: SeedsComponent}
 ];
