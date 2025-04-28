@@ -1,0 +1,31 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(to right, #83a4d4, #b6fbff);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.bg-gradient {
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+}
+
+.card {
+  border-radius: 1.5rem;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.input-group input {
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.input-group button {
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}

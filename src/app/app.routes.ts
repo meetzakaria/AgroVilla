@@ -8,6 +8,7 @@ import { InformationComponent } from './information/information.component';
 import { SeedsComponent } from './marketplace/seeds/seeds.component';
 import { MyCartComponent } from './pages/my-cart/my-cart.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { WeatherDashboardComponent } from './information/weather-dashboard/weather-dashboard.component';
 
 export const routes: Routes = [
     {path: 'blogs', component: BlogsComponent},
@@ -18,5 +19,6 @@ export const routes: Routes = [
     {path: 'info', component: InformationComponent},
     {path: 'seeds', component: SeedsComponent},
     {path: 'cart', component: MyCartComponent},
-    {path: 'plist', component: ProductListComponent}
+    {path: 'plist', component: ProductListComponent},
+    {path: 'weather', component: WeatherDashboardComponent}
 ];
