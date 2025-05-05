@@ -1,44 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RegisterRequest,UserService } from '../services copy/user.service';
+import { RegisterRequest, UserService } from '../services copy/user.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../core/auth.service';
-import { NavbarComponent } from "../navbar/navbar.component";
 
 @Component({
-  selector: 'app-home',
-  imports: [CommonModule, FormsModule, NavbarComponent],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  selector: 'app-navbar',
+  imports: [CommonModule,FormsModule],
+  templateUrl: './navbar.component.html',
+  styleUrl: './navbar.component.css'
 })
-export class HomeComponent {
+export class NavbarComponent {
 
-  products = [
-    { name: 'Hybril Rice Seeds', price: 20, image: 'seeds01.jpg' },
-    { name: 'Organic Fertilizer', price: 15, image: 'fertilizer01.jpeg' },
-    { name: 'Tractor Tiller', price: 120000, image: 'tructor01.jpg' }
-  ];
-
-  categories = [
-    'Seeds',
-    'Fertilizers',
-    'Equipment',
-    'Machinery',
-    'Saplings',
-    'Seeds',
-    'Fertilizers',
-    'Equipment',
-    'Machinery',
-    'Saplings',
-  ];
-  
-  filterByCategory(category: string) {
-    console.log("Selected Category:", category);
-    // এখান থেকে filter logic call করতে পারো
-  }
-
-  
   user: RegisterRequest = {
     
     password: '',
@@ -89,7 +63,7 @@ export class HomeComponent {
       .subscribe({
         next: (res) => {
           this.auth.setToken(res.access_token);
-          this.router.navigate(['/nav']);
+          this.router.navigate(['/home']);
         },
         error: (error) => {
           alert('Invalid credentials')

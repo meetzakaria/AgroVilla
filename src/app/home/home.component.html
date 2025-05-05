@@ -27,6 +27,28 @@
       >
     </div>
 
+    <div>
+      <!-- 🔘 Login Button -->
+      <button
+        type="button"
+        class="btn btn-success"
+        data-bs-toggle="modal"
+        data-bs-target="#Sellerlogin"
+      >
+        <i class="me-1"></i> Seller Login
+      </button>
+      |
+      <!-- 🔘 Register Button -->
+      <button
+        type="button"
+        class="btn btn-success"
+        data-bs-toggle="modal"
+        data-bs-target="#RegisterSellerModal"
+      >
+        <i class="me-1"></i> Become a Seller
+      </button>
+    </div>
+
     <!-- Right: Auth Links + Social Icons -->
     <div class="d-flex align-items-center gap-3">
       <div class="social-icons d-none d-md-block">
@@ -38,268 +60,7 @@
   </div>
 </header>
 
-<!-- Nav with logo -->
-<header class="navbar">
-  <div class="logo"><img src="logo1.png" alt="logo" height="60px" /></div>
-  <nav>
-    <a href="marketplace" class="btn" routerLink="/marketplace">Marketplace</a>
-    <a class="btn" href="guides/" routerLink="/guides">Guides</a>
-    <a href="community" class="btn" routerLink="/community">Community</a>
-    <a href="info" class="btn" routerLink="/rental">Information</a>
-    <a class="btn" href="blogs/" routerLink="/rental">Blogs</a>
-    <a
-      class="btn"
-      routerLink="/rental"
-      href="https://www.bssnews.net/agriculture-news"
-      >News Portal</a
-    >
-  </nav>
-
-  <form class="d-flex ms-auto" role="search" style="margin-right: 32px">
-    <div class="input-group">
-      <input
-        class="form-control"
-        type="search"
-        placeholder="Search products..."
-        aria-label="Search"
-      />
-      <button class="btn btn-outline-success" type="submit">
-        <i class="fas fa-search"></i>
-      </button>
-    </div>
-  </form>
-
-  <div>
-    <!-- 🔘 Login Button -->
-    <button
-      type="button"
-      class="btn btn-outline-light"
-      data-bs-toggle="modal"
-      data-bs-target="#loginModal"
-    >
-      <i class="fas fa-sign-in-alt me-1"></i> Login
-    </button>
-    |
-    <!-- 🔘 Register Button -->
-    <button
-      type="button"
-      class="btn btn-outline-light"
-      data-bs-toggle="modal"
-      data-bs-target="#RegisterModal"
-    >
-      <i class="me-1"></i> Register
-    </button>
-  </div>
-
-  <!-- <div class="icons">
-      <i style="margin-right: 12px;" class="fa fa-shopping-cart"></i>
-      <a class="btn btn-warning" href="cart">My Cart</a>
-    </div> -->
-</header>
-
-<!-- 💻 Login Modal -->
-<div
-  class="modal fade"
-  id="loginModal"
-  tabindex="-1"
-  aria-labelledby="loginModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content shadow rounded-4">
-      <!-- Modal Header -->
-      <div class="modal-header bg-success text-white">
-        <h5 class="modal-title" id="loginModalLabel">Login to Your Account</h5>
-        <button
-          type="button"
-          class="btn-close btn-close-white"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-
-      <!-- Modal Body -->
-      <div class="modal-body p-4">
-        <form>
-          <div class="mb-3">
-            <label for="emailInput" class="form-label">Phone Number</label>
-            <input
-              type="email"
-              class="form-control"
-              id="emailInput"
-              placeholder="Enter your phone number"
-              [(ngModel)]="phoneNumber"
-              name="phoneNumber"
-              required
-            />
-          </div>
-
-          <div class="mb-3">
-            <label for="passwordInput" class="form-label">Password</label>
-            <input
-              type="password"
-              class="form-control"
-              id="passwordInput"
-              placeholder="Enter your password"
-              [(ngModel)]="password"
-              name="password"
-              required
-            />
-          </div>
-
-          <button
-            (click)="onLogin()"
-            type="submit"
-            data-bs-toggle="modal"
-            class="btn btn-success w-100"
-          >
-            Login
-          </button>
-        </form>
-
-        <div class="mt-3 text-center">
-          <small
-            >Don't have an account?
-            <a
-              href="#"
-              class="text-decoration-none text-success"
-              data-bs-toggle="modal"
-              data-bs-target="#RegisterModal"
-              >Register</a
-            >
-          </small>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- 💻 Register Modal -->
-<div
-  class="modal fade"
-  id="RegisterModal"
-  tabindex="-1"
-  aria-labelledby="loginModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content shadow rounded-4">
-      <!-- Modal Header -->
-      <div class="modal-header bg-success text-white">
-        <h5 class="modal-title" id="loginModalLabel">
-          Register to Your Account
-        </h5>
-        <button
-          type="button"
-          class="btn-close btn-close-white"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-
-      <!-- Modal Body -->
-      <div class="modal-body p-4">
-        <form (ngSubmit)="onSubmit()" #registrationForm="ngForm">
-          <div class="mb-3">
-            <label for="name" class="form-label">👤 Full Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="name"
-              placeholder="Enter your full name"
-              [(ngModel)]="user.name"
-              name="name"
-              required
-            />
-            <div
-              *ngIf="
-                registrationForm.controls['name']?.invalid &&
-                (registrationForm.controls['name']?.dirty ||
-                  registrationForm.controls['name']?.touched)
-              "
-              class="text-danger"
-            >
-              First name is required.
-            </div>
-          </div>
-
-          <div class="mb-3">
-            <label for="phoneNumber" class="form-label">📞 Phone Number</label>
-            <input
-              type="tel"
-              class="form-control"
-              id="phoneNumber"
-              placeholder="Enter phone number"
-              [(ngModel)]="user.phoneNumber"
-              name="phoneNumber"
-            />
-          </div>
-
-          <div class="mb-3">
-            <label for="password" class="form-label">🔑 Password</label>
-            <input
-              type="password"
-              class="form-control"
-              id="password"
-              placeholder="Password"
-              [(ngModel)]="user.password"
-              name="password"
-              required
-            />
-            <div
-              *ngIf="
-                registrationForm.controls['password']?.invalid &&
-                (registrationForm.controls['password']?.dirty ||
-                  registrationForm.controls['password']?.touched)
-              "
-              class="text-danger"
-            >
-              Password is required.
-            </div>
-          </div>
-
-          <div class="mb-3">
-            <label for="confirmPassword" class="form-label"
-              >🔒 Confirm Password</label
-            >
-            <input
-              type="password"
-              class="form-control"
-              id="confirmPassword"
-              placeholder="Confirm Password"
-              [(ngModel)]="confirmPassword"
-              name="confirmPassword"
-              required
-            />
-            <div
-              *ngIf="
-                confirmPassword !== user.password &&
-                registrationForm.controls['confirmPassword']?.touched
-              "
-              class="text-danger"
-            >
-              Passwords do not match.
-            </div>
-          </div>
-
-          <button
-            type="submit"
-            class="btn btn-primary w-100"
-            [disabled]="
-              registrationForm.invalid || confirmPassword !== user.password
-            "
-          >
-            Register
-          </button>
-          <div class="mt-3 text-center">
-            Already have an account? <a href="/">Login here</a>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end nav with logo -->
+<app-navbar></app-navbar>
 
 <!-- Banner Section -->
 <section class="hero-banner position-relative text-white">
@@ -529,3 +290,207 @@
     <p>&copy; 2025 AgroVilla</p>
   </div>
 </footer>
+
+
+<!-- 💻 Login Modal -->
+<div
+class="modal fade"
+id="Sellerlogin"
+tabindex="-1"
+aria-labelledby="loginModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog modal-dialog-centered">
+  <div class="modal-content shadow rounded-4">
+    <!-- Modal Header -->
+    <div class="modal-header bg-success text-white">
+      <h5 class="modal-title" id="loginModalLabel">Login to Your Account</h5>
+      <button
+        type="button"
+        class="btn-close btn-close-white"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+      ></button>
+    </div>
+
+    <!-- Modal Body -->
+    <div class="modal-body p-4">
+      <form>
+        <div class="mb-3">
+          <label for="phoneNumber" class="form-label">Phone Number</label>
+          <input
+            type="tel"
+            class="form-control"
+            
+            placeholder="Enter your phone number"
+            [(ngModel)]="phoneNumber"
+            name="phoneNumber"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="passwordInput" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+          
+            placeholder="Enter your password"
+            [(ngModel)]="password"
+            name="password"
+            required
+          />
+        </div>
+
+        <button
+          (click)="onLogin()"
+          type="submit"
+          data-bs-toggle="modal"
+          class="btn btn-success w-100"
+        >
+          Login
+        </button>
+      </form>
+
+      <div class="mt-3 text-center">
+        <small
+          >Don't have an account?
+          <a
+            href="#"
+            class="text-decoration-none text-success"
+            data-bs-toggle="modal"
+            data-bs-target="#RegisterModal"
+            >Register</a
+          >
+        </small>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 💻 Register Modal -->
+<div
+class="modal fade"
+id="RegisterSellerModal"
+tabindex="-1"
+aria-labelledby="loginModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog modal-dialog-centered">
+  <div class="modal-content shadow rounded-4">
+    <!-- Modal Header -->
+    <div class="modal-header bg-success text-white">
+      <h5 class="modal-title" id="loginModalLabel">
+        Register to Your Account
+      </h5>
+      <button
+        type="button"
+        class="btn-close btn-close-white"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+      ></button>
+    </div>
+
+    <!-- Modal Body -->
+    <div class="modal-body p-4">
+      <form (ngSubmit)="onSubmit()" #registrationForm="ngForm">
+        <div class="mb-3">
+          <label for="name" class="form-label">👤 Full Name</label>
+          <input
+            type="text"
+            class="form-control"
+            
+            placeholder="Enter your full name"
+            [(ngModel)]="user.name"
+            name="name"
+            required
+          />
+          <div
+            *ngIf="
+              registrationForm.controls['name']?.invalid &&
+              (registrationForm.controls['name']?.dirty ||
+                registrationForm.controls['name']?.touched)
+            "
+            class="text-danger"
+          >
+            First name is required.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="phoneNumber" class="form-label">📞 Phone Number</label>
+          <input
+            type="tel"
+            class="form-control"
+          
+            placeholder="Enter phone number"
+            [(ngModel)]="user.phoneNumber"
+            name="phoneNumber"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">🔑 Password</label>
+          <input
+            type="password"
+            class="form-control"
+            
+            placeholder="Password"
+            [(ngModel)]="user.password"
+            name="password"
+            required
+          />
+          <div
+            *ngIf="
+              registrationForm.controls['password']?.invalid &&
+              (registrationForm.controls['password']?.dirty ||
+                registrationForm.controls['password']?.touched)
+            "
+            class="text-danger"
+          >
+            Password is required.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label"
+            >🔒 Confirm Password</label
+          >
+          <input
+            type="password"
+            class="form-control"
+            
+            placeholder="Confirm Password"
+            [(ngModel)]="confirmPassword"
+            name="confirmPassword"
+            required
+          />
+          <div
+            *ngIf="
+              confirmPassword !== user.password &&
+              registrationForm.controls['confirmPassword']?.touched
+            "
+            class="text-danger"
+          >
+            Passwords do not match.
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary w-100"
+          [disabled]="
+            registrationForm.invalid || confirmPassword !== user.password
+          "
+        >
+          Register
+        </button>
+        <div class="mt-3 text-center">
+          Already have an account? <a href="/">Login here</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
