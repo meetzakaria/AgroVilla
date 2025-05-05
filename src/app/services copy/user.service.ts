@@ -46,19 +46,15 @@ export class UserService {
 }
 
 export interface RegisterRequest {
-  email: string;
   password: string;
   role: string; //  Use string, or create an Enum/Type for Role if needed
-  firstName?: string;
-  lastName?: string;
+  name?: string;
   phoneNumber?: string;
 }
 
 interface UserResponse {
   id: number;
-  email: string;
   role: string;
-  firstName?: string;
-  lastName?: string;
+  name?: string;
   phoneNumber?: string;
 }

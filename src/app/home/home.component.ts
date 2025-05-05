@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RegisterRequest,UserService } from '../services copy/user.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -37,11 +38,10 @@ export class HomeComponent {
   }
 
   user: RegisterRequest = {
-    email: '',
+    
     password: '',
-    role: 'PATIENT',
-    firstName: '',
-    lastName: '',
+    role: 'CUSTOMER',
+    name: '',
     phoneNumber: ''
   };
   confirmPassword = '';
@@ -50,6 +50,7 @@ export class HomeComponent {
 
   constructor(
     private router: Router,
+    private auth: AuthService,
     private userService: UserService,
   ) { }
 
@@ -75,6 +76,24 @@ export class HomeComponent {
       this.registrationSuccess = false;
       alert('Passwords do not match.');
     }
+  }
+
+  phoneNumber = '';
+  password = '';
+
+  onLogin() {
+    console.log('Logging in...');
+    this.auth.login({ phoneNumber: this.phoneNumber, password: this.password })
+      .subscribe({
+        next: (res) => {
+          this.auth.setToken(res.access_token);
+          this.router.navigate(['/home']);
+        },
+        error: (error) => {
+          alert('Invalid credentials')
+          console.log(error)
+        }
+      });
   }
 
 }

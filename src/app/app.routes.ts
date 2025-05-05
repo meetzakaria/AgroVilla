@@ -20,5 +20,6 @@ export const routes: Routes = [
     {path: 'seeds', component: SeedsComponent},
     {path: 'cart', component: MyCartComponent},
     {path: 'plist', component: ProductListComponent},
-    {path: 'weather', component: WeatherDashboardComponent}
+    {path: 'weather', component: WeatherDashboardComponent},
+    {path: 'home', component: HomeComponent}
 ];
