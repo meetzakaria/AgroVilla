@@ -9,8 +9,8 @@ import { SeedsComponent } from './marketplace/seeds/seeds.component';
 import { MyCartComponent } from './pages/my-cart/my-cart.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { WeatherDashboardComponent } from './information/weather-dashboard/weather-dashboard.component';
-import { NavComponent } from './nav/nav.component';
-import { authGuard } from './core/auth.guard';
+import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.component';
+
 
 export const routes: Routes = [
     {path: 'blogs', component: BlogsComponent},
@@ -24,5 +24,6 @@ export const routes: Routes = [
     {path: 'plist', component: ProductListComponent},
     {path: 'weather', component: WeatherDashboardComponent},
     {path: 'home', component: HomeComponent},
-    {path: 'nav', component: NavComponent, canActivate: [authGuard]}
+    {path: 'seller', component: SellerDashboardComponent}
+
 ];
