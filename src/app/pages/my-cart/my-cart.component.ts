@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { CommonModule } from '@angular/common';
+import { NavbarComponent } from "../../navbar/navbar.component";
 
 @Component({
   selector: 'app-my-cart',
-  imports:[CommonModule],
+  imports: [CommonModule, NavbarComponent],
   templateUrl: './my-cart.component.html',
   styleUrls: ['./my-cart.component.css']
 })

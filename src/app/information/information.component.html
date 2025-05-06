@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <section class="info-hub container py-5">
     <div class="text-center mb-5">
       <h2 class="section-title">🌾 Farmer Information Hub</h2>
@@ -10,7 +11,7 @@
           <img [src]="info.icon" alt="icon" class="info-icon">
           <h5>{{ info.title }}</h5>
           <p>{{ info.desc }}</p>
-          <a href="#" class="btn btn-outline-primary btn-sm mt-2">Read More</a>
+          <a [routerLink]="info.path" class="btn btn-outline-primary btn-sm mt-2">Read More</a>
         </div>
       </div>
     </div>

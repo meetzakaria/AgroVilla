@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { WeatherService } from '../../services/weather.service';
+import { NavbarComponent } from "../../navbar/navbar.component";
 
 @Component({
   selector: 'app-weather-dashboard',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, NavbarComponent],
   templateUrl: './weather-dashboard.component.html',
   styleUrls: ['./weather-dashboard.component.css']
 })

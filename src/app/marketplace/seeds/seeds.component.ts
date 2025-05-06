@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { CartService } from '../../services/cart.service';
+import { NavbarComponent } from "../../navbar/navbar.component";
 
 @Component({
   selector: 'app-seeds',
-  imports: [CommonModule],
+  imports: [CommonModule, NavbarComponent],
   templateUrl: './seeds.component.html',
   styleUrl: './seeds.component.css'
 })

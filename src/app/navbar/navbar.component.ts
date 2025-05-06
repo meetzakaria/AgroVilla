@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RegisterRequest, UserService } from '../services copy/user.service';
 import { Router } from '@angular/router';
@@ -7,18 +7,18 @@ import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'app-navbar',
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  styleUrl: './navbar.component.css',
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
+  showLogin = true;
 
   user: RegisterRequest = {
-    
     password: '',
     role: 'CUSTOMER',
     name: '',
-    phoneNumber: ''
+    phoneNumber: '',
   };
   confirmPassword = '';
   registrationSuccess = false;
@@ -27,8 +27,15 @@ export class NavbarComponent {
   constructor(
     private router: Router,
     private auth: AuthService,
-    private userService: UserService,
-  ) { }
+    private userService: UserService
+  ) {}
+  
+  ngOnInit(): void {
+    // Check if user is authenticated
+    if (this.auth.isAuthenticated()) {
+      this.showLogin = false;
+    }
+  }
 
   onSubmit() {
     if (this.user.password === this.confirmPassword) {
@@ -59,17 +66,24 @@ export class NavbarComponent {
 
   onLogin() {
     console.log('Logging in...');
-    this.auth.login({ phoneNumber: this.phoneNumber, password: this.password })
+    this.auth
+      .login({ phoneNumber: this.phoneNumber, password: this.password })
       .subscribe({
         next: (res) => {
           this.auth.setToken(res.access_token);
+          this.showLogin = false;
           this.router.navigate(['/home']);
         },
         error: (error) => {
-          alert('Invalid credentials')
-          console.log(error)
-        }
+          alert('Invalid credentials');
+          console.log(error);
+        },
       });
   }
 
+  logout() {
+    this.auth.logout();
+    this.showLogin = true;
+    this.router.navigate(['/home']);
+  }
 }
