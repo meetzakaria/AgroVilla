@@ -11,6 +11,7 @@ import { WeatherDashboardComponent } from './information/weather-dashboard/weath
 import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.component';
 import { AddProductComponent } from './seller-dashboard/add-product/add-product.component';
 import { ProductListComponent } from './seller-dashboard/product-list/product-list.component';
+import { NavComponent } from './nav/nav.component';
 
 
 export const routes: Routes = [
@@ -26,6 +27,7 @@ export const routes: Routes = [
     {path: 'home', component: HomeComponent},
     {path: 'seller', component: SellerDashboardComponent},
     {path: 'ap', component: AddProductComponent},
-    {path: 'pl', component: ProductListComponent}
+    {path: 'pl', component: ProductListComponent},
+    {path: 'nav', component: NavComponent}
 
 ];
