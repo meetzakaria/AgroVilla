@@ -7,9 +7,10 @@ import { MarketplaceComponent } from './marketplace/marketplace.component';
 import { InformationComponent } from './information/information.component';
 import { SeedsComponent } from './marketplace/seeds/seeds.component';
 import { MyCartComponent } from './pages/my-cart/my-cart.component';
-import { ProductListComponent } from './product-list/product-list.component';
 import { WeatherDashboardComponent } from './information/weather-dashboard/weather-dashboard.component';
 import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.component';
+import { AddProductComponent } from './seller-dashboard/add-product/add-product.component';
+import { ProductListComponent } from './seller-dashboard/product-list/product-list.component';
 
 
 export const routes: Routes = [
@@ -21,9 +22,10 @@ export const routes: Routes = [
     {path: 'info', component: InformationComponent},
     {path: 'seeds', component: SeedsComponent},
     {path: 'cart', component: MyCartComponent},
-    {path: 'plist', component: ProductListComponent},
     {path: 'weather', component: WeatherDashboardComponent},
     {path: 'home', component: HomeComponent},
-    {path: 'seller', component: SellerDashboardComponent}
+    {path: 'seller', component: SellerDashboardComponent},
+    {path: 'ap', component: AddProductComponent},
+    {path: 'pl', component: ProductListComponent}
 
 ];

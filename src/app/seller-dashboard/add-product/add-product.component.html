@@ -1,0 +1,107 @@
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+          <h3 class="mb-0">Add New Product</h3>
+          <p class="small mb-0">Fill out the form to list your product in our marketplace</p>
+        </div>
+        
+        <div class="card-body">
+          <form (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+            <!-- Product Name -->
+            <div class="mb-3">
+              <label for="productName" class="form-label">Product Name <span class="text-danger">*</span></label>
+              <input type="text" class="form-control form-control-lg" id="productName" 
+                     [(ngModel)]="product.name" name="name" placeholder="e.g., Wireless Bluetooth Headphones" required>
+              <div class="invalid-feedback">Please provide a product name.</div>
+            </div>
+
+            <!-- Description -->
+            <div class="mb-3">
+              <label for="productDescription" class="form-label">Description</label>
+              <textarea class="form-control" id="productDescription" rows="4" 
+                        [(ngModel)]="product.description" name="description" 
+                        placeholder="Detailed description about your product..."></textarea>
+              <div class="form-text">Describe features, specifications, and benefits.</div>
+            </div>
+
+            <div class="row g-3 mb-4">
+              <!-- Price -->
+              <div class="col-md-6">
+                <label for="productPrice" class="form-label">Price ($) <span class="text-danger">*</span></label>
+                <div class="input-group">
+                  <span class="input-group-text">$</span>
+                  <input type="number" class="form-control" id="productPrice" step="0.01" min="0"
+                         [(ngModel)]="product.price" name="price" placeholder="0.00" required>
+                  <div class="invalid-feedback">Please provide a valid price.</div>
+                </div>
+              </div>
+
+              <!-- Quantity -->
+              <div class="col-md-6">
+                <label for="productQuantity" class="form-label">Stock Quantity <span class="text-danger">*</span></label>
+                <input type="number" class="form-control" id="productQuantity" min="0"
+                       [(ngModel)]="product.quantity" name="quantity" placeholder="Available items" required>
+                <div class="invalid-feedback">Please provide available quantity.</div>
+              </div>
+            </div>
+
+            <div class="row g-3 mb-4">
+              <!-- Category -->
+              <div class="col-md-6">
+                <label for="productCategory" class="form-label">Category <span class="text-danger">*</span></label>
+                <select class="form-select" id="productCategory" 
+                        [(ngModel)]="product.category" name="category" required>
+                  <option value="" disabled selected>Select a category</option>
+                  <option value="Electronics">Electronics</option>
+                  <option value="Fashion">Fashion</option>
+                  <option value="Home & Garden">Home & Garden</option>
+                  <option value="Beauty">Beauty</option>
+                  <option value="Sports">Sports</option>
+                  <option value="Other">Other</option>
+                </select>
+                <div class="invalid-feedback">Please select a category.</div>
+              </div>
+
+              <!-- Image URL -->
+              <div class="col-md-6">
+                <label for="productImage" class="form-label">Product Image URL</label>
+                <input type="url" class="form-control" id="productImage" 
+                       [(ngModel)]="product.imageUrl" name="imageUrl" placeholder="https://example.com/image.jpg">
+                <div class="form-text">Or upload image after submission.</div>
+              </div>
+            </div>
+
+            <!-- Additional Features -->
+            <div class="mb-4">
+              <label class="form-label">Additional Options</label>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="freeShipping" name="freeShipping">
+                <label class="form-check-label" for="freeShipping">Free Shipping</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="returnPolicy" name="returnPolicy" checked>
+                <label class="form-check-label" for="returnPolicy">30-Day Return Policy</label>
+              </div>
+            </div>
+
+            <!-- Form Actions -->
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button type="button" class="btn btn-outline-secondary me-md-2" (click)="onCancel()">
+                <i class="bi bi-x-circle me-1"></i> Cancel
+              </button>
+              <button type="submit" class="btn btn-primary">
+                <i class="bi bi-plus-circle me-1"></i> Add Product
+              </button>
+            </div>
+          </form>
+        </div>
+        
+        <div class="card-footer bg-light">
+          <p class="small text-muted mb-0">By submitting, you agree to our <a href="#">seller terms</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

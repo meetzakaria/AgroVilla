@@ -1,0 +1,9 @@
+<div *ngFor="let product of products" style="border: 1px solid #ccc; padding: 10px; margin: 10px;">
+    <h3>{{ product.name }}</h3>
+    <img [src]="product.imageUrl" alt="{{ product.name }}" width="200" />
+    <p>{{ product.description }}</p>
+    <p>Price: ${{ product.price }}</p>
+    <p>Category: {{ product.category }}</p>
+    <p>Quantity: {{ product.quantity }}</p>
+  </div>
+  

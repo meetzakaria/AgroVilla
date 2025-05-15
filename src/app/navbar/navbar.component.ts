@@ -72,7 +72,7 @@ export class NavbarComponent implements OnInit {
         next: (res) => {
           this.auth.setToken(res.access_token);
           this.showLogin = false;
-          this.router.navigate(['/home']);
+          // this.router.navigate(['/home']);
         },
         error: (error) => {
           alert('Invalid credentials');
