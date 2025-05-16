@@ -1,9 +1,28 @@
-<div *ngFor="let product of products" style="border: 1px solid #ccc; padding: 10px; margin: 10px;">
-    <h3>{{ product.name }}</h3>
-    <img [src]="product.imageUrl" alt="{{ product.name }}" width="200" />
-    <p>{{ product.description }}</p>
-    <p>Price: ${{ product.price }}</p>
-    <p>Category: {{ product.category }}</p>
-    <p>Quantity: {{ product.quantity }}</p>
+<app-navbar></app-navbar>
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="text-success">📦 Product List</h3>
+    <button class="btn btn-primary" (click)="onAddProduct()">➕ Add Product</button>
   </div>
-  
+
+  <div *ngIf="products.length === 0; else productGrid" class="text-center mt-5">
+    <img src="assets/empty-box.png" alt="Empty" width="150" class="mb-3">
+    <h5 class="text-muted">No products available</h5>
+    <p>Add some new products to display here.</p>
+  </div>
+
+  <ng-template #productGrid>
+    <div class="row">
+      <div class="col-md-4 mb-4" *ngFor="let product of products">
+        <div class="card h-100 shadow-sm">
+          <img [src]="product.image" class="card-img-top" alt="{{ product.name }}">
+          <div class="card-body text-center">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="text-success fw-bold">৳ {{ product.price }}</p>
+            <button class="btn btn-outline-primary btn-sm">View Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
