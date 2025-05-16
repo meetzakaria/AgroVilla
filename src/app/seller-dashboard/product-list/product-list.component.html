@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div class="container py-4">
+<!-- <div class="container py-4">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h3 class="text-success">📦 Product List</h3>
     <button class="btn btn-primary" (click)="onAddProduct()">➕ Add Product</button>
@@ -25,4 +25,23 @@
       </div>
     </div>
   </ng-template>
+</div> -->
+
+
+<div class="container my-4">
+  <h2 class="mb-4">🛒 Product List</h2>
+  <div class="row">
+    <div *ngFor="let product of products" class="col-md-4 mb-4">
+      <div class="card h-100 shadow-sm">
+        <img [src]="product.imageSrc" class="card-img-top" alt="{{product.name}}" height="200">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">{{ product.description }}</p>
+          <p><b>৳</b> {{ product.price }}</p>
+          <p><b>Category:</b> {{ product.category }}</p>
+          <p><b>Stock:</b> {{ product.quantity }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

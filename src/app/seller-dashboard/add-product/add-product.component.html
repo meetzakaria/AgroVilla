@@ -54,12 +54,12 @@
                 <select class="form-select" id="productCategory" 
                         [(ngModel)]="product.category" name="category" required>
                   <option value="" disabled selected>Select a category</option>
-                  <option value="Electronics">Equipment</option>
-                  <option value="Fashion">Seeds</option>
-                  <option value="Home & Garden">Fertilizers</option>
-                  <option value="Beauty">Machinery</option>
-                  <option value="Sports">Saplings</option>
-                  <option value="Other">Agri Packages</option>
+                  <option value="Equipment">Equipment</option>
+                  <option value="Seeds">Seeds</option>
+                  <option value="Fertilizers">Fertilizers</option>
+                  <option value="Machinery">Machinery</option>
+                  <option value="Saplings">Saplings</option>
+                  <option value="Agri Packages">Agri Packages</option>
                 </select>
                 <div class="invalid-feedback">Please select a category.</div>
               </div>
@@ -67,8 +67,9 @@
               <!-- Image URL -->
               <div class="col-md-6">
                 <label for="productImage" class="form-label"><b>Upload Product Image</b></label>
-                <input type="file" class="form-control" id="productImage" 
-                       [(ngModel)]="product.imageUrl" name="imageUrl" placeholder="upload product image">
+                <input type="file" class="form-control" id="productImage"
+       (change)="onFileSelected($event)" required>
+
                 <div class="form-text">upload your product image.</div>
               </div>
             </div>
