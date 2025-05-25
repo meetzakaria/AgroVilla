@@ -13,6 +13,7 @@ import { AuthService } from '../core/auth.service';
 })
 export class NavbarComponent implements OnInit {
   showLogin = true;
+  roleString = '';
 
   user: RegisterRequest = {
     password: '',
@@ -28,14 +29,35 @@ export class NavbarComponent implements OnInit {
     private router: Router,
     private auth: AuthService,
     private userService: UserService
-  ) {}
-  
+  ) { }
+
   ngOnInit(): void {
     // Check if user is authenticated
     if (this.auth.isAuthenticated()) {
       this.showLogin = false;
+      this.roleString = this.auth.getUserRole();
+      console.log(this.roleString);
     }
   }
+
+  getJwtPayload() {
+    const token = localStorage.getItem("accessToken");
+    if (!token) {
+      console.error("No token found in localStorage");
+      return null;
+    }
+
+    try {
+      const payloadBase64 = token.split('.')[1];
+      const payloadJson = atob(payloadBase64); // Decode base64
+      const payload = JSON.parse(payloadJson); // Convert to object
+      return payload;
+    } catch (error) {
+      console.error("Error decoding token:", error);
+      return null;
+    }
+  }
+
 
   onSubmit() {
     if (this.user.password === this.confirmPassword) {

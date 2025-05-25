@@ -10,6 +10,7 @@ export class AuthService {
 
   private readonly tokenKey = 'access_token';
   private roleSubject = new BehaviorSubject<string | null>(null);
+  private roleString: String | null = null;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -21,6 +22,7 @@ export class AuthService {
     localStorage.setItem(this.tokenKey, token);
     const payload = JSON.parse(atob(token.split('.')[1]));
     this.roleSubject.next(payload.role);
+    this.roleString = payload.role;
   }
 
   getRole() {
