@@ -19,9 +19,9 @@
     </div>
   </form>
 
-  
-  
-  
+
+
+
   @if(showLogin){
   <div>
     <!-- 🔘 Login Button -->
@@ -42,8 +42,8 @@
   <br />
   <br />
 
-  
-  
+
+
   <!-- Profile Section -->
   <div class="dropdown profile-menu">
     <img src="profile.jpg" alt="Profile" class="rounded-circle" width="40" height="40" role="button"
@@ -149,6 +149,15 @@
           </div>
 
           <div class="mb-3">
+            <label for="role" class="form-label"> 🧑 Role</label>
+            <select class="form-select" id="role" name="role" required [(ngModel)]="user.role">
+              <option value="">-- Select Role --</option>
+              <option value="SELLER">Seller</option>
+              <option value="CUSTOMER">Customer</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
             <label for="password" class="form-label">🔑 Password</label>
             <input type="password" class="form-control" placeholder="Password" [(ngModel)]="user.password"
               name="password" required />
@@ -159,8 +168,10 @@
                 " class="text-danger">
               Password is required.
             </div>
-          </div>
 
+
+
+          </div>
           <div class="mb-3">
             <label for="confirmPassword" class="form-label">🔒 Confirm Password</label>
             <input type="password" class="form-control" placeholder="Confirm Password" [(ngModel)]="confirmPassword"

@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RegisterRequest,UserService } from '../services copy/user.service';
+import { RegisterRequest,UserService } from '../services/User-Services/user.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../core/auth.service';
 import { NavbarComponent } from "../navbar/navbar.component";
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, FormsModule, NavbarComponent],
+  imports: [CommonModule, FormsModule, NavbarComponent,],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

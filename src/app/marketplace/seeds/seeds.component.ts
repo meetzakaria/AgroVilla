@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { CartService } from '../../services/cart.service';
+import { CartService } from '../../services/Cart-Services/cart.service';
 import { NavbarComponent } from "../../navbar/navbar.component";
 
 @Component({
@@ -59,6 +59,8 @@ export class SeedsComponent {
   
     addToCart(product: any): void {
       this.cartService.addToCart(product);
+      
+      
       alert(`${product.name} added to cart!`);
     }
 

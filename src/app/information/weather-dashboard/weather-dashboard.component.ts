@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { WeatherService } from '../../services/weather.service';
+import { WeatherService } from '../../services/Weather-Services/weather.service';
 import { NavbarComponent } from "../../navbar/navbar.component";
 
 @Component({

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RegisterRequest, UserService } from '../services copy/user.service';
+import { RegisterRequest, UserService } from '../services/User-Services/user.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../core/auth.service';
 
@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
 
   user: RegisterRequest = {
     password: '',
-    role: 'CUSTOMER',
+    role: '',
     name: '',
     phoneNumber: '',
   };

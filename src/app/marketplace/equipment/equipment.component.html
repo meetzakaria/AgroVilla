@@ -1,1 +1,25 @@
-<p>equipment works!</p>
+<app-navbar></app-navbar>
+<div class="container py-3">
+  <h3 class="mb-3">Equipment Products</h3>
+
+  <div *ngIf="products.length === 0" class="text-center text-muted mt-5">
+    <p>No Equipment Products Available</p>
+  </div>
+
+  <div class="row" *ngIf="products.length > 0">
+    <div class="col-md-4" *ngFor="let product of products">
+      <div class="card mb-3 shadow-sm">
+        <img [src]="'data:image/jpeg;base64,' + product.image" class="card-img-top" alt="{{ product.name }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p>{{ product.description }}</p>
+          <p class="text-success fw-bold">৳ {{ product.price }}</p>
+          <p><b>Category:</b> {{ product.category }}</p>
+          <p><b>Stock:</b> {{ product.quantity }}</p>
+          <p class="text-warning">★ ★ ★ ★ ☆</p>
+              <button class="btn btn-primary btn-sm" (click)="addToCart(product)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
