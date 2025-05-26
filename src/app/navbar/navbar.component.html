@@ -19,10 +19,7 @@
     </div>
   </form>
 
-
-
-
-  @if(showLogin){
+@if(showLogin){
   <div>
     <!-- 🔘 Login Button -->
     <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#loginModal">
@@ -34,7 +31,12 @@
       <i class="me-1"></i> Register
     </button>
   </div>
-  }@else {
+  }@else if (!showLogin && roleString === 'seller'){
+  <i class="me-1"></i><a type="button" class="btn btn-outline-light" href="seller">Seller Dashboard</a>
+      <i class="me-1"></i><a type="button" class="btn btn-outline-warning" (click)="logout()">Log Out</a>
+}
+  
+  @else{
   <div class="icons" style="margin-right: 12px">
     <i style="margin-right: 12px" class="fa fa-shopping-cart"></i>
     <a class="btn btn-warning" href="cart">My Cart</a>
@@ -72,6 +74,39 @@
   }
 
 </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- 💻 Login Modal -->
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel">

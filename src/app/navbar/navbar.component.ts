@@ -37,6 +37,8 @@ export class NavbarComponent implements OnInit {
       this.showLogin = false;
       this.roleString = this.auth.getUserRole();
       console.log(this.roleString);
+      console.log("Role from token: ", this.roleString);
+
     }
   }
 

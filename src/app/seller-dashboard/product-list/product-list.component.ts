@@ -16,11 +16,9 @@ export class ProductListComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.http.get<any[]>('http://localhost:8082/api/products')
+    this.http.get<any[]>('http://localhost:8081/api/products')
       .subscribe(data => {
         this.products = this.processProducts(data);
-        // শুধু Equipment ক্যাটাগরি ফিল্টার করুন
-        this.filteredProducts = this.products.filter(p => p.category === 'Equipment');
       });
   }
 

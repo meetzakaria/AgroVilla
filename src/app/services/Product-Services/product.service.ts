@@ -17,11 +17,11 @@ export interface Product {
 })
 export class ProductService {
 
-  private apiUrl = 'http://localhost:8082';
+  private apiUrl = 'http://localhost:8081';
 
   constructor(private http: HttpClient) {}
 
   getProductsByCategory(category: string): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.apiUrl}/products/category/${category}`);
+    return this.http.get<Product[]>(`${this.apiUrl}/api/products/category/${category}`);
   }
 }

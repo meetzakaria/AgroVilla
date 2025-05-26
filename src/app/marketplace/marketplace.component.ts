@@ -22,13 +22,13 @@ export class MarketplaceComponent {
       name: 'Fertilizers',
       description: 'Organic and chemical fertilizers for better yield.',
       image: 'marketplace/fertilizer.jpg',
-      path:'/fertilizers'
+      path:'/fertilizer'
     },
     {
       name: 'Equipment',
       description: 'Tools & accessories for daily farming needs.',
       image: 'marketplace/equipment.jpg',
-      path:'seed'
+      path:'/equipment'
     },
     {
       name: 'Machinery',
