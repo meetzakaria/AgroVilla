@@ -41,7 +41,7 @@ export class AddProductComponent {
     formData.append('category', this.product.category);
     formData.append('image', this.selectedImageFile);  // File append
 
-    this.http.post('http://localhost:8081/api/products', formData).subscribe({
+    this.http.post('http://localhost:8081/api/products/add', formData).subscribe({
       next: () => {
         alert('✅ Product added successfully!');
         this.product = {
