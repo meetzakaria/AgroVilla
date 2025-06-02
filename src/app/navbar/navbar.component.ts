@@ -1,7 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RegisterRequest, UserService } from '../services/User-Services/user.service';
+import {
+  RegisterRequest,
+  UserService,
+} from '../services/User-Services/user.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../core/auth.service';
 
@@ -20,7 +23,9 @@ export class NavbarComponent implements OnInit {
     role: '',
     name: '',
     phoneNumber: '',
+    sellerStatus: '',
   };
+
   confirmPassword = '';
   registrationSuccess = false;
   registrationError = '';
@@ -29,7 +34,7 @@ export class NavbarComponent implements OnInit {
     private router: Router,
     private auth: AuthService,
     private userService: UserService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     // Check if user is authenticated
@@ -37,15 +42,14 @@ export class NavbarComponent implements OnInit {
       this.showLogin = false;
       this.roleString = this.auth.getUserRole();
       console.log(this.roleString);
-      console.log("Role from token: ", this.roleString);
-
+      console.log('Role from token: ', this.roleString);
     }
   }
 
   getJwtPayload() {
-    const token = localStorage.getItem("accessToken");
+    const token = localStorage.getItem('accessToken');
     if (!token) {
-      console.error("No token found in localStorage");
+      console.error('No token found in localStorage');
       return null;
     }
 
@@ -55,14 +59,19 @@ export class NavbarComponent implements OnInit {
       const payload = JSON.parse(payloadJson); // Convert to object
       return payload;
     } catch (error) {
-      console.error("Error decoding token:", error);
+      console.error('Error decoding token:', error);
       return null;
     }
   }
 
-
   onSubmit() {
     if (this.user.password === this.confirmPassword) {
+      if (this.user.role === 'SELLER') {
+        this.user.sellerStatus = 'PENDING';
+      } else if (this.user.role === 'CUSTOMER') {
+        this.user.sellerStatus = 'APPROVED';
+      }
+
       this.userService.registerUser(this.user).subscribe({
         next: (response) => {
           console.log('Registration successful:', response);

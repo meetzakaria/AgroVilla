@@ -3,10 +3,9 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-
   private baseUrl = 'http://localhost:8081';
 
   constructor(private http: HttpClient) {}
@@ -20,10 +19,9 @@ export class UserService {
     const url = `${this.baseUrl}/api/auth/register`;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' }); // Set content type
 
-    return this.http.post<UserResponse>(url, registerRequest, { headers })
-      .pipe(
-        catchError(this.handleError) // Handle errors
-      );
+    return this.http.post<UserResponse>(url, registerRequest, { headers }).pipe(
+      catchError(this.handleError) // Handle errors
+    );
   }
 
   /**
@@ -38,7 +36,9 @@ export class UserService {
       errorMessage = `Error: ${error.error.message}`;
     } else {
       // Server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.error?.message || 'Server error'}`;
+      errorMessage = `Error Code: ${error.status}\nMessage: ${
+        error.error?.message || 'Server error'
+      }`;
     }
     console.error(errorMessage);
     return throwError(() => new Error(errorMessage)); // Use throwError
@@ -47,9 +47,10 @@ export class UserService {
 
 export interface RegisterRequest {
   password: string;
-  role: string; //  Use string, or create an Enum/Type for Role if needed
+  role: string;
   name?: string;
   phoneNumber?: string;
+  sellerStatus?: string;
 }
 
 interface UserResponse {
