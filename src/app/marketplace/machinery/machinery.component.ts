@@ -1,23 +1,26 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../services/Product-Services/product.service';
-import { NavbarComponent } from "../../navbar/navbar.component";
+import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { NavbarComponent } from "../../navbar/navbar.component";
+import { ProductService } from '../../services/Product-Services/product.service';
+import { CartService } from '../../services/Cart-Services/cart.service';
 
 @Component({
-  selector: 'app-machinery',
-  imports: [NavbarComponent,CommonModule],
+  selector: 'app-equipment',
   templateUrl: './machinery.component.html',
-  styleUrl: './machinery.component.css'
+  styleUrls: ['./machinery.component.css'],
+  imports: [CommonModule, NavbarComponent],
 })
-export class MachineryComponent implements OnInit {
+export class EquipmentComponent implements OnInit {
   products: any[] = [];
   filteredProducts: any[] = [];
-  cartService: any;
+  
 
   constructor(
     private http: HttpClient,
-    private productService: ProductService
+    private productService: ProductService,
+    private cartService: CartService
   ) { }
 
   ngOnInit() {
@@ -41,7 +44,10 @@ export class MachineryComponent implements OnInit {
   }
 
   addToCart(product: any): void {
-    this.cartService.addToCart(product);
-    alert(`${product.name} added to cart!`);
-  }
+      this.cartService.addToCart(product);
+      
+      
+      alert(`${product.name} added to cart!`);
+    }
+  
 }

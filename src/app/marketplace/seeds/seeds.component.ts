@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/Cart-Services/cart.service';
 import { NavbarComponent } from "../../navbar/navbar.component";
+import { HttpClient } from '@angular/common/http';
+import { ProductService } from '../../services/Product-Services/product.service';
 
 @Component({
   selector: 'app-seeds',
@@ -9,61 +11,42 @@ import { NavbarComponent } from "../../navbar/navbar.component";
   templateUrl: './seeds.component.html',
   styleUrl: './seeds.component.css'
 })
-export class SeedsComponent {
-
-
-  constructor(private cartService: CartService) {}
+export class SeedsComponent implements OnInit {
+  products: any[] = [];
+  filteredProducts: any[] = [];
   
-    products = [
-      {
-        name: 'Hybrid Tomato Seeds',
-        price: 15,
-        image: 'marketplace/seeds/tomato.jpg'
-      },
-      {
-        name: 'Arabian Cucumber Seeds',
-        price: 150,
-        image: 'marketplace/seeds/cucumber.png'
-      },
-      {
-        name: 'HYBRID Black FLORANCE F1 WATER MELON SEEDS',
-        price: 20,
-        image: 'marketplace/seeds/tormuj.jpg'
-      },
-      {
-        name: 'Hybrid Supremo BAROMASHI Cucumber Seeds',
-        price: 55,
-        image: 'marketplace/seeds/shosha.png'
-      },
-      {
-        name: 'Bangladeshi Spinach, Palong Shak seeds',
-        price: 65,
-        image: 'marketplace/seeds/palang.jpg'
-      },
-      {
-        name: 'Adenium Flowers Seeds from Thailand',
-        price: 120,
-        image: 'marketplace/seeds/ful.jpg'
-      },
-      {
-        name: 'Chili Red JHALMORICH F1 Hybrid Seeds',
-        price: 40,
-        image: 'marketplace/seeds/moric.png'
-      },
-      {
-        name: '6 items capsicum combo package',
-        price: 180,
-        image: 'marketplace/seeds/capsicam.jpg'
+
+  constructor(
+    private http: HttpClient,
+    private productService: ProductService,
+    private cartService: CartService
+  ) { }
+
+  ngOnInit() {
+
+    this.productService.getProductsByCategory('Seeds').subscribe(data => {
+      this.products = this.processProducts(data);
+      this.filteredProducts = this.products.filter(p => p.category === 'Seeds');
+    });
+
+  }
+
+  processProducts(data: any[]): any[] {
+    return data.map(p => {
+      let imageSrc = '';
+      if (p.image && Array.isArray(p.image)) {
+        const base64 = btoa(String.fromCharCode(...p.image));
+        imageSrc = 'data:image/jpeg;base64,' + base64;
       }
-    ];
-  
-    addToCart(product: any): void {
+      return { ...p, imageSrc };
+    });
+  }
+
+  addToCart(product: any): void {
       this.cartService.addToCart(product);
       
       
       alert(`${product.name} added to cart!`);
     }
-
   
-
 }

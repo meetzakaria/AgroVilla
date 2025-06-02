@@ -1,48 +1,53 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../services/Product-Services/product.service';
+import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from "../../navbar/navbar.component";
+import { ProductService } from '../../services/Product-Services/product.service';
+import { CartService } from '../../services/Cart-Services/cart.service';
 
 @Component({
-  selector: 'app-fertilizer',
-  imports: [CommonModule, NavbarComponent],
+  selector: 'app-equipment',
   templateUrl: './fertilizer.component.html',
-  styleUrl: './fertilizer.component.css'
+  styleUrls: ['./fertilizer.component.css'],
+  imports: [CommonModule, NavbarComponent],
 })
 export class FertilizerComponent implements OnInit {
-
   products: any[] = [];
-    filteredProducts: any[] = [];
-    cartService: any;
+  filteredProducts: any[] = [];
   
-    constructor(
-      private http: HttpClient,
-      private productService: ProductService
-    ) { }
-  
-    ngOnInit() {
-  
-      this.productService.getProductsByCategory('Fertilizer').subscribe(data => {
-        this.products = this.processProducts(data);
-        this.filteredProducts = this.products.filter(p => p.category === 'Fertilizer');
-      });
-  
-    }
-  
-    processProducts(data: any[]): any[] {
-      return data.map(p => {
-        let imageSrc = '';
-        if (p.image && Array.isArray(p.image)) {
-          const base64 = btoa(String.fromCharCode(...p.image));
-          imageSrc = 'data:image/jpeg;base64,' + base64;
-        }
-        return { ...p, imageSrc };
-      });
-    }
-  
-    addToCart(product: any): void {
+
+  constructor(
+    private http: HttpClient,
+    private productService: ProductService,
+    private cartService: CartService
+  ) { }
+
+  ngOnInit() {
+
+    this.productService.getProductsByCategory('Fertilizers').subscribe(data => {
+      this.products = this.processProducts(data);
+      this.filteredProducts = this.products.filter(p => p.category === 'Fertilizers');
+    });
+
+  }
+
+  processProducts(data: any[]): any[] {
+    return data.map(p => {
+      let imageSrc = '';
+      if (p.image && Array.isArray(p.image)) {
+        const base64 = btoa(String.fromCharCode(...p.image));
+        imageSrc = 'data:image/jpeg;base64,' + base64;
+      }
+      return { ...p, imageSrc };
+    });
+  }
+
+  addToCart(product: any): void {
       this.cartService.addToCart(product);
+      
+      
       alert(`${product.name} added to cart!`);
     }
+  
 }

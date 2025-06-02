@@ -13,6 +13,8 @@ import { AddProductComponent } from './seller-dashboard/add-product/add-product.
 import { ProductListComponent } from './seller-dashboard/product-list/product-list.component';
 import { EquipmentComponent } from './marketplace/equipment/equipment.component';
 import { FertilizerComponent } from './marketplace/fertilizer/fertilizer.component';
+import { AdminDashboardComponent } from './admins/admin-dashboard/admin-dashboard.component';
+import { PendingApprovalComponent } from './admins/pending-approval/pending-approval.component';
 
 
 export const routes: Routes = [
@@ -31,5 +33,7 @@ export const routes: Routes = [
     {path: 'pl', component: ProductListComponent},
     {path: 'equipment', component: EquipmentComponent},
     {path: 'fertilizer', component: FertilizerComponent},
+    {path: 'admin', component: AdminDashboardComponent},
+    {path: 'pendingapproval', component: PendingApprovalComponent}
 
 ];

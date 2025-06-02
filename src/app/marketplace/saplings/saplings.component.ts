@@ -1,23 +1,26 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../services/Product-Services/product.service';
+import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from "../../navbar/navbar.component";
+import { ProductService } from '../../services/Product-Services/product.service';
+import { CartService } from '../../services/Cart-Services/cart.service';
 
 @Component({
-  selector: 'app-saplings',
-  imports: [CommonModule, NavbarComponent],
+  selector: 'app-equipment',
   templateUrl: './saplings.component.html',
-  styleUrl: './saplings.component.css'
+  styleUrls: ['./saplings.component.css'],
+  imports: [CommonModule, NavbarComponent],
 })
-export class SaplingsComponent implements OnInit {
+export class EquipmentComponent implements OnInit {
   products: any[] = [];
   filteredProducts: any[] = [];
-  cartService: any;
+  
 
   constructor(
     private http: HttpClient,
-    private productService: ProductService
+    private productService: ProductService,
+    private cartService: CartService
   ) { }
 
   ngOnInit() {
@@ -41,7 +44,10 @@ export class SaplingsComponent implements OnInit {
   }
 
   addToCart(product: any): void {
-    this.cartService.addToCart(product);
-    alert(`${product.name} added to cart!`);
-  }
+      this.cartService.addToCart(product);
+      
+      
+      alert(`${product.name} added to cart!`);
+    }
+  
 }

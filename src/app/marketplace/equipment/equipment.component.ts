@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from "../../navbar/navbar.component";
 import { ProductService } from '../../services/Product-Services/product.service';
+import { CartService } from '../../services/Cart-Services/cart.service';
 
 @Component({
   selector: 'app-equipment',
@@ -14,11 +15,12 @@ import { ProductService } from '../../services/Product-Services/product.service'
 export class EquipmentComponent implements OnInit {
   products: any[] = [];
   filteredProducts: any[] = [];
-  cartService: any;
+  
 
   constructor(
     private http: HttpClient,
-    private productService: ProductService
+    private productService: ProductService,
+    private cartService: CartService
   ) { }
 
   ngOnInit() {
@@ -42,7 +44,10 @@ export class EquipmentComponent implements OnInit {
   }
 
   addToCart(product: any): void {
-    this.cartService.addToCart(product);
-    alert(`${product.name} added to cart!`);
-  }
+      this.cartService.addToCart(product);
+      
+      
+      alert(`${product.name} added to cart!`);
+    }
+  
 }
