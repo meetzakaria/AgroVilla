@@ -44,7 +44,7 @@ export class SeedsComponent implements OnInit {
 
   addToCart(product: any): void {
       this.cartService.addToCart(product);
-      
+      debugger
       
       alert(`${product.name} added to cart!`);
     }

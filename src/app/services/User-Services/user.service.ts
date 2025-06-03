@@ -7,28 +7,43 @@ import { catchError, Observable, throwError } from 'rxjs';
 })
 export class UserService {
   private baseUrl = 'http://localhost:8081';
+  private apiUrl = `${this.baseUrl}/api/users`;
 
   constructor(private http: HttpClient) {}
 
-  /**
-   * Registers a new user.
-   * @param registerRequest The registration data.
-   * @returns An Observable containing the UserResponse on success, or an error on failure.
-   */
+
   registerUser(registerRequest: RegisterRequest): Observable<UserResponse> {
     const url = `${this.baseUrl}/api/auth/register`;
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' }); // Set content type
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     return this.http.post<UserResponse>(url, registerRequest, { headers }).pipe(
-      catchError(this.handleError) // Handle errors
+      catchError(this.handleError)
     );
   }
 
-  /**
-   * Error handler for HTTP requests.
-   * @param error The error object.
-   * @returns An Observable that throws the error.
-   */
+  getSellers(): Observable<UserResponse[]> {
+    const url = `${this.apiUrl}`;
+    return this.http.get<UserResponse[]>(url).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getPendingSellers(): Observable<UserResponse[]> {
+    const url = `${this.apiUrl}/roleAndStatus?role=SELLER&sellerStatus=PENDING`;
+    return this.http.get<UserResponse[]>(url).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+
+updateSellerStatus(userId: number, status: string): Observable<UserResponse> {
+  const url = `${this.apiUrl}/${userId}/status?status=${status}`;
+  return this.http.put<UserResponse>(url, {}).pipe(
+    catchError(this.handleError)
+  );
+}
+
+
   private handleError(error: any): Observable<any> {
     let errorMessage = 'An error occurred';
     if (error.error instanceof ErrorEvent) {
@@ -36,15 +51,14 @@ export class UserService {
       errorMessage = `Error: ${error.error.message}`;
     } else {
       // Server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${
-        error.error?.message || 'Server error'
-      }`;
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.error?.message || 'Server error'}`;
     }
     console.error(errorMessage);
-    return throwError(() => new Error(errorMessage)); // Use throwError
+    return throwError(() => new Error(errorMessage));
   }
 }
 
+// Interfaces
 export interface RegisterRequest {
   password: string;
   role: string;
@@ -53,9 +67,15 @@ export interface RegisterRequest {
   sellerStatus?: string;
 }
 
-interface UserResponse {
+export interface UserResponse {
   id: number;
   role: string;
   name?: string;
   phoneNumber?: string;
+  sellerStatus?: string;
+}
+export enum SellerStatus {
+  PENDING = 'PENDING',
+  APPROVED = 'APPROVED',
+  REJECTED = 'REJECTED'
 }

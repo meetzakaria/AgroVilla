@@ -15,6 +15,7 @@ import { EquipmentComponent } from './marketplace/equipment/equipment.component'
 import { FertilizerComponent } from './marketplace/fertilizer/fertilizer.component';
 import { AdminDashboardComponent } from './admins/admin-dashboard/admin-dashboard.component';
 import { PendingApprovalComponent } from './admins/pending-approval/pending-approval.component';
+import { UserlistComponent } from './admins/userlist/userlist.component';
 
 
 export const routes: Routes = [
@@ -34,6 +35,7 @@ export const routes: Routes = [
     {path: 'equipment', component: EquipmentComponent},
     {path: 'fertilizer', component: FertilizerComponent},
     {path: 'admin', component: AdminDashboardComponent},
-    {path: 'pendingapproval', component: PendingApprovalComponent}
+    {path: 'pendingapproval', component: PendingApprovalComponent},
+    {path: 'userlist', component: UserlistComponent},
 
 ];

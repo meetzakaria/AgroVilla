@@ -9,7 +9,8 @@
     <div class="row" *ngIf="cartItems.length > 0">
       <div class="col-md-2 mb-3" *ngFor="let item of cartItems; let i = index">
         <div class="card">
-          <img [src]="item.image" class="card-img-top" alt="{{ item.name }}">
+          <!-- <img [src]="item.imageSrc" class="card-img-top" alt="{{ item.name }}"> -->
+          <img [src]="'data:image/jpeg;base64,' + item.image" class="card-img-top" alt="{{ item.name }}">
           <div class="card-body">
             <h5>{{ item.name }}</h5>
             <p>৳ {{ item.price }}</p>

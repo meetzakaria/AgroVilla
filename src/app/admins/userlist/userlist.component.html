@@ -6,8 +6,8 @@
       <ul class="sidebar-menu">
         <li><a href="admin" ><i class="bi bi-house-door"></i> Profile</a></li>
         <li><a href="pl"><i class="bi bi-box-seam"></i> All Product</a></li>
-        <li><a href="userlist"><i class="bi bi-cart-check"></i> User List</a></li>
-        <li><a href="pendingapproval" class="active"><i class="bi bi-bar-chart-line"></i> Pending Request</a></li>
+        <li><a href="userlist" class="active"><i class="bi bi-cart-check"></i> User List</a></li>
+        <li><a href="pendingapproval"><i class="bi bi-bar-chart-line"></i> Pending Request</a></li>
         <li><a href="#"><i class="bi bi-bar-chart-line"></i>Report</a></li>
         <li><a href="#"><i class="bi bi-gear"></i> Settings</a></li>
       </ul>
@@ -22,7 +22,7 @@
     </div>
 
     <div >
-      <h2>Pending Seller Registeration!</h2>
+      <h2>All USer List!</h2>
       
       
       <table>
@@ -39,12 +39,7 @@
             <td data-label="Id">{{ seller.id }}</td>
             <td data-label="Name">{{ seller.name }}</td>
             <td data-label="Phone Number">{{ seller.phoneNumber }}</td>
-            <td data-label="Status">
-  <button class="btn btn-success" (click)="approveSeller(seller.id)">Approve</button>&nbsp;
-  <button class="btn btn-danger" (click)="rejectSeller(seller.id)">Reject</button>
-</td>
-
-          </tr>
+            <td data-label="Status">{{ seller.sellerStatus }}</td>
         </tbody>
       </table>
     </div>
