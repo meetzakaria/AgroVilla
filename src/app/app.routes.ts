@@ -16,6 +16,7 @@ import { FertilizerComponent } from './marketplace/fertilizer/fertilizer.compone
 import { AdminDashboardComponent } from './admins/admin-dashboard/admin-dashboard.component';
 import { PendingApprovalComponent } from './admins/pending-approval/pending-approval.component';
 import { UserlistComponent } from './admins/userlist/userlist.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 
 export const routes: Routes = [
@@ -37,5 +38,6 @@ export const routes: Routes = [
     {path: 'admin', component: AdminDashboardComponent},
     {path: 'pendingapproval', component: PendingApprovalComponent},
     {path: 'userlist', component: UserlistComponent},
+    {path: 'checkout', component: CheckoutComponent},
 
 ];

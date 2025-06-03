@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+<div class="checkout-container">
+  <h2>Your Cart</h2>
+
+  <table class="cart-table">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cartItems; let i = index">
+        <td><img [src]="item.image || item.imageSrc" alt="Product Image" width="70" /></td>
+        <td>{{ item.name }}</td>
+        <td>৳ {{ item.price }}</td>
+        <td>
+          <button (click)="decreaseQty(i)">−</button>
+          {{ item.quantity }}
+          <button (click)="increaseQty(i)">+</button>
+        </td> <!-- future enhancement: make this dynamic -->
+        <td><button (click)="removeItem(i)">🗑️</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="order-summary">
+    <h3>Order Summary</h3>
+    <p>Subtotal ({{ cartItems.length }} items): <strong>৳ {{ subtotal }}</strong></p>
+    <p>Shipping Fee: <strong>৳ 0</strong></p>
+    <p>Total: <strong>৳ {{ subtotal }}</strong></p>
+    <button class="checkout-btn">Proceed to Checkout</button>
+  </div>
+</div>

@@ -79,3 +79,8 @@ export enum SellerStatus {
   APPROVED = 'APPROVED',
   REJECTED = 'REJECTED'
 }
+export enum Role {
+  SELLER = 'SELLER',
+  CUSTOMER = 'CUSTOMER',
+  ADMIN = 'ADMIN'
+}
