@@ -1,28 +1,38 @@
 <app-navbar></app-navbar>
-<div class="container py-5">
-    <h2 class="text-center mb-4">🛍️ My Cart</h2>
-  
-    <div *ngIf="cartItems.length === 0">
-      <p class="text-center">Your cart is empty.</p>
-    </div>
-  
-    <div class="row" *ngIf="cartItems.length > 0">
-      <div class="col-md-2 mb-3" *ngFor="let item of cartItems; let i = index">
-        <div class="card">
-          <!-- <img [src]="item.imageSrc" class="card-img-top" alt="{{ item.name }}"> -->
-          <img [src]="'data:image/jpeg;base64,' + item.image" class="card-img-top" alt="{{ item.name }}">
-          <div class="card-body">
-            <h5>{{ item.name }}</h5>
-            <p>৳ {{ item.price }}</p>
-            <button class="btn btn-danger btn-sm" (click)="removeItem(i)">Remove</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    <div class="text-center mt-4" *ngIf="cartItems.length > 0">
-      <button class="btn btn-outline-secondary" (click)="clearCart()">Clear Cart</button> &nbsp;
-      <button class="btn btn-warning">Order Now</button>
-    </div>
+<div class="checkout-container">
+  <h2>My Cart</h2><br>
+
+  <table class="cart-table">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cartItems; let i = index">
+        <td><img [src]="'data:image/jpeg;base64,' + item.image" alt="Product Image" width="40" /></td>
+        <td>{{ item.name }}</td>
+        <td>৳ {{ item.price }}</td>
+        <td>
+          <button (click)="decreaseQty(i)">−</button>
+          {{ item.quantity }}
+          <button (click)="increaseQty(i)">+</button>
+        </td>
+        <td><button (click)="removeItem(i)">🗑️</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="order-summary">
+    <h3>Order Summary</h3>
+    <!-- <p>Subtotal ({{ cartItems.length }} items): <strong>৳ {{ getTotal() }}</strong></p> -->
+    <p>Subtotal ({{ getTotalQuantity() }} items): <strong>৳ {{ getTotal() }}</strong></p>
+    <p>Shipping Fee: <strong>৳ 0</strong></p>
+    <p>Total: <strong>৳ </strong></p>
+    <button class="checkout-btn">Proceed to Checkout</button>
   </div>
-  
+</div>

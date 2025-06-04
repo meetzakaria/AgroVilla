@@ -4,6 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class CartService {
+  navigate(arg0: string[]) {
+    throw new Error('Method not implemented.');
+  }
   private CART_KEY = 'agrovilla-cart';
 
   constructor() {}
