@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css'],
-  imports: [NavbarComponent,CommonModule]
+  imports: [CommonModule]
 })
 export class CheckoutComponent {
   
