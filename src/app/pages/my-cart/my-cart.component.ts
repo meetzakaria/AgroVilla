@@ -17,13 +17,24 @@ export class MyCartComponent  implements OnInit {
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
-    this.cartItems = this.cartService.getCartItems();
-    this.calculateSubtotal();
-  }
+  this.cartItems = this.cartService.getCartItems().map((item: any) => ({
+    ...item,
+    quantity: item.quantity ?? 1 // যদি না থাকে, তাহলে 1 সেট করো
+  }));
+  this.calculateSubtotal();
+}
+
+
+  // calculateSubtotal(): void {
+  //   this.subtotal = this.cartItems.reduce((total, item) => total + (item.price || 0), 0);
+  // }
 
   calculateSubtotal(): void {
-    this.subtotal = this.cartItems.reduce((total, item) => total + (item.price || 0), 0);
-  }
+  this.subtotal = this.cartItems.reduce((total, item) => {
+    return total + item.price * item.quantity;
+  }, 0);
+}
+
 
   removeItem(index: number): void {
     this.cartService.removeFromCart(index);
@@ -39,12 +50,14 @@ export class MyCartComponent  implements OnInit {
 
   increaseQty(index: number): void {
     this.cartItems[index].quantity++;
+    this.calculateSubtotal();
     
   }
 
   decreaseQty(index: number): void {
     if (this.cartItems[index].quantity > 1) {
       this.cartItems[index].quantity--;
+      this.calculateSubtotal();
     }
   }
 
