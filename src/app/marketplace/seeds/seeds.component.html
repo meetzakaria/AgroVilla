@@ -12,6 +12,7 @@
       <div class="card mb-3 shadow-sm">
         <img [src]="'data:image/jpeg;base64,' + product.image" class="card-img-top" alt="{{ product.name }}">
         <div class="card-body">
+          <p>SKU: {{ product.sku }}</p>
           <h5 class="card-title">{{ product.name }}</h5>
           <p>{{ product.description }}</p>
           <p class="text-success fw-bold">৳ {{ product.price }}</p>

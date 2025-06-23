@@ -34,15 +34,41 @@
   <div class="row">
     <div *ngFor="let product of products" class="col-md-3 mb-4">
       <div class="card h-100 shadow-sm">
-        
-        <img [src]="'data:image/jpeg;base64,' + product.image" class="card-img-top" alt="{{ product.name }}">
+        <img
+          [src]="'data:image/jpeg;base64,' + product.image"
+          class="card-img-top"
+          alt="{{ product.name }}"
+        />
         <div class="card-body">
+          <p>SKU: {{ product.sku }}</p>
           <h5 class="card-title">{{ product.name }}</h5>
           <p class="card-text">{{ product.description }}</p>
           <p><b>৳</b> {{ product.price }}</p>
           <p><b>Category:</b> {{ product.category }}</p>
           <p><b>Stock:</b> {{ product.quantity }}</p>
-          <div class="d-flex gap-2"> <button type="button" class="btn btn-primary btn-sm"> <i class="bi bi-pencil-square"></i> Edit </button> <button type="button" class="btn btn-danger btn-sm"> <i class="bi bi-trash"></i> Delete </button> </div>
+
+          <div *ngIf="editingProduct?.id !== product.id" class="d-flex gap-2">
+            <button type="button" class="btn btn-primary btn-sm" (click)="editProduct(product)">
+              <i class="bi bi-pencil-square"></i> Edit
+            </button>
+            <button type="button" class="btn btn-danger btn-sm" (click)="deleteProduct(product.id)">
+              <i class="bi bi-trash"></i> Delete
+            </button>
+          </div>
+
+          <div *ngIf="editingProduct?.id === product.id" class="mt-2">
+            <input class="form-control mb-2" [(ngModel)]="editingProduct.name" placeholder="Name" name="name" />
+            <input class="form-control mb-2" [(ngModel)]="editingProduct.price" type="number" name="price" />
+            <textarea class="form-control mb-2" [(ngModel)]="editingProduct.description" name="description"></textarea>
+            <input class="form-control mb-2" [(ngModel)]="editingProduct.category" name="category" />
+            <input class="form-control mb-2" [(ngModel)]="editingProduct.quantity" type="number" name="quantity" />
+            <input class="form-control mb-2" [(ngModel)]="editingProduct.sku" name="sku" />
+
+            <div class="d-flex gap-2">
+              <button class="btn btn-success btn-sm" (click)="saveEdit()">✅ Save</button>
+              <button class="btn btn-secondary btn-sm" (click)="cancelEdit()">❌ Cancel</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

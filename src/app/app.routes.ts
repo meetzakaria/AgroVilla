@@ -17,27 +17,40 @@ import { AdminDashboardComponent } from './admins/admin-dashboard/admin-dashboar
 import { PendingApprovalComponent } from './admins/pending-approval/pending-approval.component';
 import { UserlistComponent } from './admins/userlist/userlist.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { authGuard } from './core/auth.guard';
 
 
 export const routes: Routes = [
-    {path: 'blogs', component: BlogsComponent},
-    {path: '' , component: HomeComponent},
-    {path: 'guides', component: CropGuidesComponent},
-    {path: 'community', component: CommunityComponent},
-    {path: 'marketplace', component: MarketplaceComponent},
-    {path: 'info', component: InformationComponent},
-    {path: 'seeds', component: SeedsComponent},
-    {path: 'cart', component: MyCartComponent},
-    {path: 'weather', component: WeatherDashboardComponent},
-    {path: 'home', component: HomeComponent},
-    {path: 'seller', component: SellerDashboardComponent},
-    {path: 'ap', component: AddProductComponent},
-    {path: 'pl', component: ProductListComponent},
-    {path: 'equipment', component: EquipmentComponent},
-    {path: 'fertilizer', component: FertilizerComponent},
-    {path: 'admin', component: AdminDashboardComponent},
-    {path: 'pendingapproval', component: PendingApprovalComponent},
-    {path: 'userlist', component: UserlistComponent},
-    {path: 'checkout', component: CheckoutComponent},
+    { path: 'blogs', component: BlogsComponent },
+    { path: '', component: HomeComponent },
+    { path: 'guides', component: CropGuidesComponent },
+    { path: 'community', component: CommunityComponent },
+    { path: 'marketplace', component: MarketplaceComponent },
+    { path: 'info', component: InformationComponent },
+    { path: 'seeds', component: SeedsComponent },
+    { path: 'cart', component: MyCartComponent },
+    { path: 'weather', component: WeatherDashboardComponent },
+    { path: 'home', component: HomeComponent },
+    {
+        path: 'seller', component: SellerDashboardComponent,
+        data: { roles: ['seller'] },
+        canActivate: [authGuard]
+    },
+    { path: 'ap', component: AddProductComponent,
+        data: { roles: ['admin', 'seller'] },
+                canActivate: [authGuard]
+     },
+    { path: 'pl', component: ProductListComponent },
+    { path: 'equipment', component: EquipmentComponent },
+    { path: 'fertilizer', component: FertilizerComponent },
+    {
+        path: 'admin', component: AdminDashboardComponent,
+        data: { roles: ['admin'] },
+        canActivate: [authGuard]
+    },
+
+    { path: 'pendingapproval', component: PendingApprovalComponent },
+    { path: 'userlist', component: UserlistComponent },
+    { path: 'checkout', component: CheckoutComponent },
 
 ];

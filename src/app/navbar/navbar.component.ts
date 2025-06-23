@@ -7,6 +7,7 @@ import {
 } from '../services/User-Services/user.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../core/auth.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-navbar',
@@ -30,10 +31,14 @@ export class NavbarComponent implements OnInit {
   registrationSuccess = false;
   registrationError = '';
 
+  searchTerm: string = '';
+searchResults: any[] = [];
+
   constructor(
     private router: Router,
     private auth: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    private http: HttpClient,
   ) {}
 
   ngOnInit(): void {
@@ -119,4 +124,15 @@ export class NavbarComponent implements OnInit {
     this.showLogin = true;
     this.router.navigate(['/home']);
   }
+
+
+  searchProducts() {
+  this.http
+    .get<any[]>(`http://localhost:8081/api/products/search?keyword=${this.searchTerm}`)
+    .subscribe((data) => {
+      this.searchResults = data;
+    });
+}
+
+
 }

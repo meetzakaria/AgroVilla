@@ -10,6 +10,7 @@ export interface Product {
   quantity: number;
   category: string;
   image: string;
+  sku?: string;
 }
 
 @Injectable({
@@ -17,11 +18,33 @@ export interface Product {
 })
 export class ProductService {
 
-  private apiUrl = 'http://localhost:8081';
+  private baseUrl = 'http://localhost:8081';
+  
 
   constructor(private http: HttpClient) {}
 
   getProductsByCategory(category: string): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.apiUrl}/api/products/category/${category}`);
+    return this.http.get<Product[]>(`${this.baseUrl}/api/products/category/${category}`);
   }
+
+  addProduct(product: Product): Observable<Product> {
+  return this.http.post<Product>(`${this.baseUrl}/products`, product);
+}
+
+getAllProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.baseUrl}`);
+  }
+
+  updateProduct(id: number, product: Product): Observable<Product> {
+    return this.http.put<Product>(`${this.baseUrl}/${id}`, product);
+  }
+
+  deleteProduct(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+  }
+
+  getProductById(id: number): Observable<Product> {
+    return this.http.get<Product>(`${this.baseUrl}/${id}`);
+  }
+
 }

@@ -1,21 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
-import { NavbarComponent } from '../../navbar/navbar.component';
+import { ProductService, Product } from '../../services/Product-Services/product.service';
+import { NavbarComponent } from "../../navbar/navbar.component";
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  imports: [CommonModule, NavbarComponent],
   selector: 'app-product-list',
+  standalone: true,
+  imports: [CommonModule, NavbarComponent, FormsModule],
   templateUrl: './product-list.component.html',
 })
 export class ProductListComponent implements OnInit {
-  products: any[] = [];
-  filteredProducts: any[] | undefined;
+  products: Product[] = [];
+  editingProduct: Product | null = null;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private productService: ProductService) {}
 
   ngOnInit() {
+    this.loadProducts();
     this.http
       .get<any[]>('http://localhost:8081/api/products')
       .subscribe((data) => {
@@ -23,15 +26,46 @@ export class ProductListComponent implements OnInit {
       });
   }
 
-  processProducts(data: any[]): any[] {
+  loadProducts() {
+    this.productService.getAllProducts().subscribe((data: Product[]) => {
+      this.products = this.processProducts(data);
+    });
+  }
+
+  processProducts(data: Product[]): Product[] {
     return data.map((p) => {
-      let imageSrc = '';
-      // console.log(p.image);
       if (p.image && Array.isArray(p.image)) {
         const base64 = btoa(String.fromCharCode(...p.image));
-        imageSrc = 'data:image/jpeg;base64,' + base64;
+        return { ...p, image: base64 };
       }
-      return { ...p, imageSrc };
+      return p;
     });
+  }
+
+  deleteProduct(id: number) {
+    if (confirm('Are you sure to delete this product?')) {
+      this.productService.deleteProduct(id).subscribe(() => {
+        this.loadProducts();
+      });
+    }
+  }
+
+  editProduct(product: Product) {
+    this.editingProduct = { ...product };
+  }
+
+  saveEdit() {
+    if (this.editingProduct) {
+      this.productService
+        .updateProduct(this.editingProduct.id, this.editingProduct)
+        .subscribe(() => {
+          this.loadProducts();
+          this.editingProduct = null;
+        });
+    }
+  }
+
+  cancelEdit() {
+    this.editingProduct = null;
   }
 }
