@@ -1,8 +1,11 @@
 <app-navbar></app-navbar>
-<div class="checkout-container">
-  <h2>My Cart</h2><br>
-
-  <table class="cart-table">
+<div class="container py-4">
+  <div class="row">
+    <!-- Left: Cart Items -->
+    <div class="col-md-8">
+      <h4 class="mb-3">Your Cart</h4>
+      <div *ngIf="cartItems.length > 0; else emptyCart">
+        <table class="cart-table">
     <thead>
       <tr>
         <th>Image</th>
@@ -26,13 +29,24 @@
       </tr>
     </tbody>
   </table>
+      </div>
+      <ng-template #emptyCart>
+        <div class="alert alert-warning">
+          Your cart is empty.
+        </div>
+      </ng-template>
+    </div>
 
-  <div class="order-summary">
-    <h3>Order Summary</h3>
-    <!-- <p>Subtotal ({{ cartItems.length }} items): <strong>৳ {{ getTotal() }}</strong></p> -->
-    <p>Subtotal ({{ getTotalQuantity() }} items): <strong>৳ {{ getTotal() }}</strong></p>
-    <p>Shipping Fee: <strong>৳ 0</strong></p>
-    <p>Total: <strong>৳ </strong></p>
-    <button class="checkout-btn">Proceed to Checkout</button>
+    <!-- Right: Order Summary -->
+    <div class="col-md-4">
+      <div class="card shadow-lg">
+        <div class="card-body">
+          <p>Subtotal ({{ getTotalQuantity() }} items): <strong> {{ subTotal() }} Tk</strong></p>
+    <p>Shipping Fee: <strong>{{ shippingCharge }} Tk</strong></p>
+    <p>Total: <strong>{{ getTotal() }} Tk</strong></p>
+          <button routerLink="/payment" class="btn btn-success w-100 mt-3">Proceed to Checkout</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

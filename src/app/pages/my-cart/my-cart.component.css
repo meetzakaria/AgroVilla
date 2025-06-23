@@ -29,3 +29,20 @@
   border: none;
   cursor: pointer;
 }
+
+
+.card {
+  border-radius: 15px;
+}
+
+table th, table td {
+  vertical-align: middle;
+}
+
+button.btn-outline-secondary {
+  width: 32px;
+  height: 32px;
+  line-height: 1;
+  text-align: center;
+  padding: 0;
+}

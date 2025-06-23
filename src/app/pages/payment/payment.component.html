@@ -1,0 +1,64 @@
+<app-navbar></app-navbar>
+<div class="container py-4">
+  <div class="row">
+    <!-- Left: Order Summary -->
+    <div class="col-md-6 mb-3">
+      <div class="card shadow">
+        <div class="card-body">
+          <h5 class="mb-3">Order Summary</h5>
+          <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between" *ngFor="let item of cartItems">
+              <span>{{ item.name }} (x{{ item.quantity }})</span>
+              <strong>{{ item.price * item.quantity }} ৳</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Shipping</span>
+              <strong>60 ৳</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Total</span>
+              <strong class="text-success">{{ totalAmount }} ৳</strong>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Payment Form -->
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-body">
+          <h5 class="mb-3">Select Payment Method</h5>
+
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" id="cod" value="cod" name="payment" [(ngModel)]="paymentMethod">
+            <label class="form-check-label" for="cod">
+              Cash on Delivery (COD)
+            </label>
+          </div>
+
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" id="bkash" value="bkash" name="payment" [(ngModel)]="paymentMethod">
+            <label class="form-check-label" for="bkash">
+              bKash (Manual Payment)
+            </label>
+          </div>
+
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="radio" id="nagad" value="nagad" name="payment" [(ngModel)]="paymentMethod">
+            <label class="form-check-label" for="nagad">
+              Nagad (Manual Payment)
+            </label>
+          </div>
+
+          <div class="mb-3">
+            <label for="note" class="form-label">Order Note (optional)</label>
+            <textarea class="form-control" id="note" rows="2" placeholder="Delivery instructions..."></textarea>
+          </div>
+
+          <button class="btn btn-success w-100" (click)="confirmOrder()">Confirm Payment</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

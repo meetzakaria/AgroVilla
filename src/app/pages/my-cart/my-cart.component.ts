@@ -2,39 +2,34 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/Cart-Services/cart.service';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from '../../navbar/navbar.component';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-my-cart',
-  imports: [CommonModule, NavbarComponent],
+  imports: [CommonModule, NavbarComponent, RouterModule],
   templateUrl: './my-cart.component.html',
   styleUrls: ['./my-cart.component.css'],
 })
-export class MyCartComponent  implements OnInit {
+export class MyCartComponent implements OnInit {
   cartItems: any[] = [];
   subtotal: number = 0;
+  shippingCharge: number = 60; // ✅ Shipping charge added
 
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
-  this.cartItems = this.cartService.getCartItems().map((item: any) => ({
-    ...item,
-    quantity: item.quantity ?? 1 // যদি না থাকে, তাহলে 1 সেট করো
-  }));
-  this.calculateSubtotal();
-}
-
-
-  // calculateSubtotal(): void {
-  //   this.subtotal = this.cartItems.reduce((total, item) => total + (item.price || 0), 0);
-  // }
+    this.cartItems = this.cartService.getCartItems().map((item: any) => ({
+      ...item,
+      quantity: item.quantity ?? 1, // যদি না থাকে, তাহলে 1 সেট করো
+    }));
+    this.calculateSubtotal();
+  }
 
   calculateSubtotal(): void {
-  this.subtotal = this.cartItems.reduce((total, item) => {
-    return total + item.price * item.quantity;
-  }, 0);
-}
-
+    this.subtotal = this.cartItems.reduce((total, item) => {
+      return total + item.price * item.quantity;
+    }, 0);
+  }
 
   removeItem(index: number): void {
     this.cartService.removeFromCart(index);
@@ -51,7 +46,6 @@ export class MyCartComponent  implements OnInit {
   increaseQty(index: number): void {
     this.cartItems[index].quantity++;
     this.calculateSubtotal();
-    
   }
 
   decreaseQty(index: number): void {
@@ -61,12 +55,15 @@ export class MyCartComponent  implements OnInit {
     }
   }
 
+  subTotal(): number {
+    return this.cartItems.reduce((total, item) => total + item.price * item.quantity, 0); // ✅ Added shipping charge
+  }
+
   getTotal(): number {
-    return this.cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+    return this.cartItems.reduce((total, item) => total + item.price * item.quantity, 0) + this.shippingCharge; // ✅ Added shipping charge
   }
 
   getTotalQuantity(): number {
     return this.cartItems.reduce((total, item) => total + item.quantity, 0);
   }
-
 }

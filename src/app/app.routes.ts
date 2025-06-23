@@ -16,8 +16,9 @@ import { FertilizerComponent } from './marketplace/fertilizer/fertilizer.compone
 import { AdminDashboardComponent } from './admins/admin-dashboard/admin-dashboard.component';
 import { PendingApprovalComponent } from './admins/pending-approval/pending-approval.component';
 import { UserlistComponent } from './admins/userlist/userlist.component';
-import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { authGuard } from './core/auth.guard';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { PaymentComponent } from './pages/payment/payment.component';
 
 
 export const routes: Routes = [
@@ -51,6 +52,8 @@ export const routes: Routes = [
 
     { path: 'pendingapproval', component: PendingApprovalComponent },
     { path: 'userlist', component: UserlistComponent },
-    { path: 'checkout', component: CheckoutComponent },
+
+    { path: 'user', component: UserProfileComponent },
+    { path: 'payment', component: PaymentComponent },
 
 ];
