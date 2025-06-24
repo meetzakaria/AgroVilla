@@ -44,7 +44,7 @@
           <p>Subtotal ({{ getTotalQuantity() }} items): <strong> {{ subTotal() }} Tk</strong></p>
     <p>Shipping Fee: <strong>{{ shippingCharge }} Tk</strong></p>
     <p>Total: <strong>{{ getTotal() }} Tk</strong></p>
-          <button routerLink="/payment" class="btn btn-success w-100 mt-3">Proceed to Checkout</button>
+          <button routerLink="/payment" class="btn btn-success w-100 mt-3" (click)="checkout()">Proceed to Checkout</button>
         </div>
       </div>
     </div>

@@ -14,6 +14,7 @@ export class MyCartComponent implements OnInit {
   cartItems: any[] = [];
   subtotal: number = 0;
   shippingCharge: number = 60; // ✅ Shipping charge added
+  http: any;
 
   constructor(private cartService: CartService) {}
 
@@ -66,4 +67,28 @@ export class MyCartComponent implements OnInit {
   getTotalQuantity(): number {
     return this.cartItems.reduce((total, item) => total + item.quantity, 0);
   }
+
+
+
+
+
+  checkout() {
+  const cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
+
+  const order = {
+    userId: 1, // auth user id, ideally from auth service
+    items: cartItems.map((item: any) => ({
+      productId: item.id,
+      productName: item.name,
+      price: item.price,
+      quantity: item.quantity
+    }))
+  };
+
+  this.http.post('/api/orders/place', order).subscribe(() => {
+    alert("Order placed successfully!");
+    localStorage.removeItem('cart');
+  });
+}
+
 }
