@@ -43,11 +43,12 @@ export class ProductListComponent implements OnInit {
   }
 
   deleteProduct(id: number) {
-    if (confirm('Are you sure to delete this product?')) {
+     
+     if (confirm('Are you sure to delete this product?')) {
       this.productService.deleteProduct(id).subscribe(() => {
         this.loadProducts();
       });
-    }
+     }
   }
 
   editProduct(product: Product) {

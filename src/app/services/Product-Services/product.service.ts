@@ -36,11 +36,11 @@ getAllProducts(): Observable<Product[]> {
   }
 
   updateProduct(id: number, product: Product): Observable<Product> {
-    return this.http.put<Product>(`${this.baseUrl}/${id}`, product);
+    return this.http.put<Product>(`${this.baseUrl}/api/products/${id}`, product);
   }
 
   deleteProduct(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+    return this.http.delete<void>(`${this.baseUrl}/api/products/${id}`);
   }
 
   getProductById(id: number): Observable<Product> {
