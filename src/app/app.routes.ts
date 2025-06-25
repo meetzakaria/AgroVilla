@@ -19,6 +19,8 @@ import { UserlistComponent } from './admins/userlist/userlist.component';
 import { authGuard } from './core/auth.guard';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { PaymentComponent } from './pages/payment/payment.component';
+import { OrdersComponent } from './orders/orders.component';
+import { ShippingComponent } from './shipping/shipping.component';
 
 
 export const routes: Routes = [
@@ -55,5 +57,13 @@ export const routes: Routes = [
 
     { path: 'user', component: UserProfileComponent },
     { path: 'payment', component: PaymentComponent },
+    {path: 'orders', component: OrdersComponent,
+        data: { roles: ['admin', 'seller'] },
+                canActivate: [authGuard]
+    },
+    {path: 'shipping', component: ShippingComponent,
+        data: { roles: ['admin', 'seller'] },
+                canActivate: [authGuard]
+    },
 
 ];

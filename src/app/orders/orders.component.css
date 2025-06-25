@@ -1,0 +1,48 @@
+.checkout-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.cart-table th, .cart-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.order-summary {
+  border: 1px solid #ddd;
+  padding: 20px;
+  text-align: right;
+}
+
+.checkout-btn {
+  background-color: #f57224;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+
+.card {
+  border-radius: 15px;
+}
+
+table th, table td {
+  vertical-align: middle;
+}
+
+button.btn-outline-secondary {
+  width: 32px;
+  height: 32px;
+  line-height: 1;
+  text-align: center;
+  padding: 0;
+}

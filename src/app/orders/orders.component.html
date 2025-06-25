@@ -1,0 +1,48 @@
+<app-navbar></app-navbar>
+<div class="container py-4">
+  <div class="row">
+    <!-- Left: Cart Items -->
+    <div class="col-md-8">
+      <h4 class="mb-3">Order Request</h4>
+      <div *ngIf="cartItems.length > 0; else emptyCart">
+        <table class="cart-table">
+    <thead>
+      <tr>
+        <th>Customer Id</th>
+        <th>SKU</th>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cartItems; let i = index">
+        <td>Id: 12</td>
+        <td>{{item.sku}}</td>
+        <td>{{ item.name }}</td>
+        <td>৳ {{ item.price }}</td>
+        <td>{{ item.quantity}}</td>
+      </tr>
+    </tbody>
+  </table>
+      </div>
+      <ng-template #emptyCart>
+        <div class="alert alert-warning">
+          Your cart is empty.
+        </div>
+      </ng-template>
+    </div>
+
+    <!-- Right: Order Summary -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <p>Subtotal ({{ getTotalQuantity() }} items): <strong> {{ subTotal() }} Tk</strong></p>
+    <p>Shipping Fee: <strong>{{ shippingCharge }} Tk</strong></p>
+    <p>Total: <strong>{{ getTotal() }} Tk</strong></p>
+          <button routerLink="/payment" class="btn btn-success w-100 mt-3" (click)="checkout()">Order Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

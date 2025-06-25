@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+
+<div class="container py-4">
+  <div class="row">
+    <!-- Left: Cart Items -->
+    <div >
+      <h4 class="mb-3 fw-bold">🛍️ Shipped Items</h4>
+
+      <div *ngIf="cartItems.length > 0; else emptyCart">
+        <div class="table-responsive shadow-sm rounded">
+          <table class="table table-bordered table-hover align-middle text-center">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">Customer ID</th>
+                <th scope="col">SKU</th>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider">
+              <tr *ngFor="let item of cartItems; let i = index">
+                <td>Id: 12</td>
+                <td>{{ item.sku }}</td>
+                <td class="text-start">{{ item.name }}</td>
+                <td>৳ {{ item.price }}</td>
+                <td>{{ item.quantity }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Empty Cart Message -->
+      <ng-template #emptyCart>
+        <div class="alert alert-warning mt-4">
+          🛒 Your cart is empty.
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
