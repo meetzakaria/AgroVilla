@@ -1,29 +1,39 @@
 <app-navbar></app-navbar>
-<section class="marketplace-products container py-5">
-    <div class="section-title text-center mb-4">
-      <h2>AgroVilla 🌱🌿🍁 Fertilizers</h2>
-      <p>High-quality fertilizers for every season.</p>
 
-    </div>
-    
-    <section class="container py-5">
-      <div class="row" *ngIf="products.length > 0">
-    <div class="col-md-4" *ngFor="let product of products">
-      <div class="card mb-3 shadow-sm">
-        <img [src]="'data:image/jpeg;base64,' + product.image" class="card-img-top" alt="{{ product.name }}">
-        <div class="card-body">
-          <h5 class="card-title">{{ product.name }}</h5>
-          <p>{{ product.description }}</p>
-          <p class="text-success fw-bold">৳ {{ product.price }}</p>
-          <p><b>Category:</b> {{ product.category }}</p>
-          <p><b>Stock:</b> {{ product.quantity }}</p>
-          <p class="text-warning">★ ★ ★ ★ ☆</p>
-              <button class="btn btn-primary btn-sm" (click)="addToCart(product)">Add to Cart</button>
+<section class="marketplace-products container py-5">
+  <div class="section-title text-center mb-4">
+    <h2>AgroVilla 🌱🌿🍁 Fertilizers</h2>
+    <p>High-quality fertilizers for every season.</p>
+  </div>
+
+  <div class="row justify-content-center" *ngIf="products.length > 0">
+    <div
+      class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4"
+      *ngFor="let product of products"
+    >
+      <div class="card h-100 shadow-sm border-0 rounded-3 product-card">
+        <img
+          [src]="'data:image/jpeg;base64,' + product.image"
+          class="card-img-top product-img"
+          alt="{{ product.name }}"
+        />
+        <div class="card-body p-2">
+          <h6 class="fw-semibold mb-1">{{ product.name }}</h6>
+          <p class="mb-1 text-truncate" title="{{ product.description }}">
+            {{ product.description }}
+          </p>
+          <p class="text-success fw-bold mb-1">৳ {{ product.price }}</p>
+          <small><b>Category:</b> {{ product.category }}</small><br />
+          <small><b>Stock:</b> {{ product.quantity }}</small>
+          <p class="text-warning mb-1 mt-1">★ ★ ★ ★ ☆</p>
+          <button
+            class="btn btn-sm btn-outline-primary w-100"
+            (click)="addToCart(product)"
+          >
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-
-    

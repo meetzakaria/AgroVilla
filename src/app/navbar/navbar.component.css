@@ -11,3 +11,26 @@
     margin: 0 10px;
     text-decoration: none;
   }
+
+
+  /* search */
+
+.product-img {
+  height: 130px;
+  object-fit: cover;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.product-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-body {
+  font-size: 0.85rem;
+}

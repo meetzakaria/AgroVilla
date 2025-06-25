@@ -13,14 +13,54 @@
   <form class="d-flex ms-auto" role="search" style="margin-right: 32px">
     <div class="input-group">
       <input class="form-control" name="search" type="search" [(ngModel)]="searchTerm" placeholder="Search products..." aria-label="Search" />
-      <button class="btn btn-outline-success" type="submit" (click)="searchProducts()">
+      <button class="btn btn-outline-success" type="submit" (click)="searchProducts()" data-bs-toggle="modal" data-bs-target="#searchModal">
         <i class="fas fa-search"></i>
       </button>
-      <div *ngFor="let product of searchResults">
-  <h3>{{ product.name }}</h3>
-  <p>{{ product.description }}</p>
-  <p>৳ {{ product.price }}</p>
+
+<!-- Modal -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content" style="width: 50% ; height: 60%" >
+      <div class="modal-header">
+        <h5 class="modal-title" id="searchModalLabel">Search Results</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body">
+        <div *ngFor="let product of searchResults">
+          <div class="card h-100 shadow-sm border-0 rounded-3 product-card">
+        <img
+          [src]="'data:image/jpeg;base64,' + product.image"
+          class="card-img-top product-img"
+          alt="{{ product.name }}"
+        />
+        <div class="card-body p-2">
+          <small class="text-muted">SKU: {{ product.sku }}</small>
+          <h6 class="mt-1 mb-1 fw-semibold">{{ product.name }}</h6>
+          <p class="mb-1 text-truncate" title="{{ product.description }}">
+            {{ product.description }}
+          </p>
+          <p class="text-success fw-bold mb-1">৳ {{ product.price }}</p>
+          <small><b>Category:</b> {{ product.category }}</small><br />
+          <small><b>Stock:</b> {{ product.quantity }}</small>
+        </div>
+      </div>
 </div>
+
+        <ng-template #noResults>
+          <p>No products found.</p>
+        </ng-template>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
     </div>
   </form>
 

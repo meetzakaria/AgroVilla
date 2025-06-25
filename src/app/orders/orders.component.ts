@@ -15,6 +15,7 @@ export class OrdersComponent implements OnInit {
     subtotal: number = 0;
     shippingCharge: number = 60; // ✅ Shipping charge added
     http: any;
+  router: any;
   
     constructor(private cartService: CartService) {}
   
@@ -89,6 +90,11 @@ export class OrdersComponent implements OnInit {
       alert("Order placed successfully!");
       localStorage.removeItem('cart');
     });
+  }
+
+  confirmOrder(): void {
+    alert('✅ Order Shipped!');
+    this.router.navigate(['/shipping']);
   }
 
 }
