@@ -29,7 +29,7 @@
       <div class="modal-body">
         <div *ngFor="let product of searchResults">
           <div class="card h-100 shadow-sm border-0 rounded-3 product-card">
-        <img
+        <img 
           [src]="'data:image/jpeg;base64,' + product.image"
           class="card-img-top product-img"
           alt="{{ product.name }}"

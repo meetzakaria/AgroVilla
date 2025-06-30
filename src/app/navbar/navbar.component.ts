@@ -134,5 +134,9 @@ searchResults: any[] = [];
     });
 }
 
+mixer(){
+  this.router.navigate(['/equipment']);
+}
+
 
 }
